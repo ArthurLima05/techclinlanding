@@ -1,19 +1,28 @@
 
 import React from "react";
+
 const Footer = () => {
-  return <footer className="w-full bg-white py-0">
+  return (
+    <footer className="w-full bg-primary text-primary-foreground">
       <div className="section-container">
-        <p className="text-center text-gray-600 text-sm">
-          This template takes inspiration from{" "}
-          <a href="https://x.com/BrettFromDJ" target="_blank" rel="noopener noreferrer" className="text-pulse-500 hover:underline">
-            DesignJoy's
-          </a>{" "}
-          BUILD WARS design, built entirely with Lovable by{" "}
-          <a href="https://x.com/rezaul_arif" target="_blank" rel="noopener noreferrer" className="text-pulse-500 hover:underline">
-            Rezaul Arif
-          </a>
-        </p>
+        <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-6">
+          <div className="text-center md:text-left">
+            <p className="font-bree text-lg">TechClin</p>
+            <p className="text-sm opacity-90">Consultoria tecnológica para clínicas médicas</p>
+          </div>
+          <div className="text-sm space-y-1 text-center md:text-right">
+            <p>
+              Contato: <a href="mailto:contato@techclin.com" className="underline hover:opacity-90">contato@techclin.com</a>
+            </p>
+            <p>
+              WhatsApp: <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-90">+55 11 99999-9999</a>
+            </p>
+            <p className="opacity-80">© {new Date().getFullYear()} TechClin. Todos os direitos reservados.</p>
+          </div>
+        </div>
       </div>
-    </footer>;
+    </footer>
+  );
 };
+
 export default Footer;
