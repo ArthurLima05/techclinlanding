@@ -229,8 +229,7 @@ const Index = () => {
                   <img
                     src="/placeholder.svg"
                     alt="Foto do consultor da TechClin"
-                    className="w-full object-cover"
-                    loading="lazy"
+                    className="w-full h-full"
                     decoding="async"
                   />
                 </div>
