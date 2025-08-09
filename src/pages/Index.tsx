@@ -223,8 +223,8 @@ const Index = () => {
               title="Sobre o Consultor"
               subtitle="Especialista em mapeamento de processos (BPMN) e diagnóstico operacional para clínicas."
             />
-            <div className="grid md:grid-cols-2 gap-8 items-start">
-              <div className="relative order-2 md:order-2 animate-fade-in-right md:justify-self-end">
+            <div className="grid md:grid-cols-2 gap-8 items-start md:items-center">
+              <div className="relative order-2 md:order-2 animate-fade-in-right md:justify-self-end md:self-center">
                 <div className="aspect-[4/5] w-3/4 sm:w-2/3 md:w-3/4 max-w-[320px] mx-auto md:mx-0 rounded-2xl overflow-hidden border border-primary/15 bg-background shadow-elegant hover:-translate-y-1 hover:shadow-elegant-hover transition-all">
                   <img
                     src="/placeholder.svg"

@@ -34,8 +34,12 @@ export default function VideoTestimonials() {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious aria-label="Vídeo anterior" />
-        <CarouselNext aria-label="Próximo vídeo" />
+        <CarouselPrevious aria-label="Vídeo anterior" className="hidden sm:flex" />
+        <CarouselNext aria-label="Próximo vídeo" className="hidden sm:flex" />
+        <div className="mt-3 flex items-center justify-center gap-3 sm:hidden">
+          <CarouselPrevious aria-label="Vídeo anterior" />
+          <CarouselNext aria-label="Próximo vídeo" />
+        </div>
       </Carousel>
       <p className="text-center text-sm text-foreground/70 mt-2">Carrossel estático — substitua pelas URLs dos seus vídeos posteriormente.</p>
     </div>
