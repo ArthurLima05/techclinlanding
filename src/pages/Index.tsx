@@ -33,14 +33,16 @@ const Index = () => {
 
       <main className="flex-1">
         {/* Hero */}
-        <section id="hero" className="bg-secondary">
-          <div className="section-container pt-10 md:pt-16">
+        <section id="hero" className="relative overflow-hidden bg-primary text-primary-foreground">
+          <div className="absolute -top-16 -right-16 w-72 h-72 rounded-full bg-accent/20 blur-3xl animate-float" />
+          <div className="absolute -bottom-10 -left-10 w-80 h-80 rounded-full bg-primary-foreground/10 blur-3xl animate-float" style={{animationDelay:'1s'}} />
+          <div className="section-container pt-12 md:pt-20">
             <div className="mx-auto max-w-4xl text-center">
-              <p className="inline-block rounded-full bg-primary/10 text-primary px-3 py-1 text-sm mb-4 animate-fade-in" style={{animationDelay: '0.05s'}}>Consultoria 1:1 exclusiva</p>
-              <h1 className="section-title text-primary animate-fade-in" style={{animationDelay: '0.1s'}}>
+              <p className="inline-block rounded-full bg-primary-foreground/10 text-primary-foreground px-3 py-1 text-sm mb-4 animate-fade-in" style={{animationDelay: '0.05s'}}>Consultoria 1:1 exclusiva</p>
+              <h1 className="section-title text-primary-foreground animate-fade-in" style={{animationDelay: '0.1s'}}>
                 Mapeamento e otimização de processos para clínicas médicas
               </h1>
-              <p className="section-subtitle text-foreground/80 mx-auto animate-fade-in" style={{animationDelay: '0.2s'}}>
+              <p className="section-subtitle text-primary-foreground/90 mx-auto animate-fade-in" style={{animationDelay: '0.2s'}}>
                 Relatório personalizado com BPMN e recomendações baseadas em dados reais para decisões estratégicas.
               </p>
               <div className="mt-6 md:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 animate-fade-in" style={{animationDelay: '0.3s'}}>
@@ -51,7 +53,7 @@ const Index = () => {
                   </Button>
                 </a>
                 <a href="#processo">
-                  <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary/10">
+                  <Button variant="outline" size="lg" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10">
                     Como funciona
                   </Button>
                 </a>
@@ -91,24 +93,24 @@ const Index = () => {
         </section>
 
         {/* Diferencial TechClin */}
-        <section id="bpmn" className="bg-secondary">
+        <section id="bpmn" className="bg-background">
           <div className="section-container">
             <SectionHeader
               title="O diferencial TechClin — Mapeamento e Relatório BPMN"
               subtitle="Compreenda o fluxo do paciente e os processos internos em profundidade para tomar decisões com segurança."
             />
             <div className="grid md:grid-cols-3 gap-6">
-              <article className="glass-card p-6 animate-fade-in" style={{animationDelay: '0.05s'}}>
+              <article className="glass-card p-6 hover-lift animate-fade-in-left" style={{animationDelay: '0.05s'}}>
                 <Workflow className="text-primary mb-3" />
                 <h3 className="font-bree text-xl mb-2">Mapeamento completo (BPMN)</h3>
                 <p className="text-foreground/80">Documentação visual do modelo atual, incluindo o fluxo do paciente e todos os atores envolvidos.</p>
               </article>
-              <article className="glass-card p-6 animate-fade-in" style={{animationDelay: '0.15s'}}>
+              <article className="glass-card p-6 hover-lift animate-fade-in" style={{animationDelay: '0.15s'}}>
                 <ClipboardList className="text-primary mb-3" />
                 <h3 className="font-bree text-xl mb-2">Relatório personalizado</h3>
                 <p className="text-foreground/80">Identificação de gargalos, problemas operacionais e oportunidades de automação fundamentadas em dados reais.</p>
               </article>
-              <article className="glass-card p-6 animate-fade-in" style={{animationDelay: '0.25s'}}>
+              <article className="glass-card p-6 hover-lift animate-fade-in-right" style={{animationDelay: '0.25s'}}>
                 <CheckCircle className="text-primary mb-3" />
                 <h3 className="font-bree text-xl mb-2">Recomendações práticas</h3>
                 <p className="text-foreground/80">Propostas claras com priorização de impacto, incluindo fluxo otimizado em BPMN e próximos passos.</p>
@@ -125,15 +127,15 @@ const Index = () => {
               subtitle="Cada empresa é única. Entregamos desde pequenas automações até aplicações sob medida — valores sempre sob consulta."
             />
             <div className="grid md:grid-cols-3 gap-6">
-              <div className="feature-card bg-white border animate-fade-in" style={{animationDelay: '0.05s'}}>
+              <div className="feature-card bg-white border border-primary/10 hover:shadow-elegant-hover hover:-translate-y-1 transition-all animate-fade-in-left" style={{animationDelay: '0.05s'}}>
                 <h4 className="font-bree text-lg mb-1">Integrações com WhatsApp</h4>
                 <p className="text-foreground/80">Automatize confirmações, agendamentos e lembretes integrando com o fluxo da sua recepção.</p>
               </div>
-              <div className="feature-card bg-white border animate-fade-in" style={{animationDelay: '0.15s'}}>
+              <div className="feature-card bg-white border border-primary/10 hover:shadow-elegant-hover hover:-translate-y-1 transition-all animate-fade-in" style={{animationDelay: '0.15s'}}>
                 <h4 className="font-bree text-lg mb-1">Pequenas automações</h4>
                 <p className="text-foreground/80">Reduza tarefas repetitivas com automações que conectam sistemas já utilizados pela sua equipe.</p>
               </div>
-              <div className="feature-card bg-white border animate-fade-in" style={{animationDelay: '0.25s'}}>
+              <div className="feature-card bg-white border border-primary/10 hover:shadow-elegant-hover hover:-translate-y-1 transition-all animate-fade-in-right" style={{animationDelay: '0.25s'}}>
                 <h4 className="font-bree text-lg mb-1">Aplicações específicas</h4>
                 <p className="text-foreground/80">Desenvolvimento de soluções sob medida para necessidades muito específicas da sua operação.</p>
               </div>
@@ -143,7 +145,7 @@ const Index = () => {
         </section>
 
         {/* Problemas que resolvemos */}
-        <section id="problemas" className="bg-secondary">
+        <section id="problemas" className="bg-background">
           <div className="section-container">
             <SectionHeader title="Problemas que podemos ajudar a resolver" />
             <ul className="max-w-4xl mx-auto grid md:grid-cols-2 gap-3">
@@ -155,7 +157,7 @@ const Index = () => {
                 "Integrações inexistentes ou mal configuradas",
                 "Falta de padronização nos processos e comunicação",
               ].map((item, i) => (
-                <li key={i} className="flex items-start gap-3 bg-white rounded-xl p-4 border animate-fade-in" style={{animationDelay: `${0.05 * (i+1)}s`}}>
+                <li key={i} className={`flex items-start gap-3 bg-white rounded-xl p-4 border border-primary/10 hover:-translate-y-1 hover:shadow-elegant-hover transition-all ${(i % 2 === 0) ? 'animate-fade-in-left' : 'animate-fade-in-right'}`} style={{animationDelay: `${0.04 * (i+1)}s`}}>
                   <CheckCircle className="text-primary shrink-0 mt-0.5" />
                   <span className="text-foreground/80">{item}</span>
                 </li>
@@ -165,7 +167,7 @@ const Index = () => {
         </section>
 
         {/* Como funciona o processo */}
-        <section id="processo" className="bg-background">
+        <section id="processo" className="bg-primary/5">
           <div className="section-container">
             <SectionHeader title="Como funciona o processo" />
             <div className="grid md:grid-cols-4 gap-6">
@@ -175,10 +177,12 @@ const Index = () => {
                 { title: "Soluções personalizadas", desc: "Desenvolvimento do que for mais adequado — valores sob consulta.", Icon: MessageSquare },
                 { title: "Suporte e acompanhamento", desc: "Apoio contínuo para garantir a adoção e medir resultados.", Icon: CheckCircle },
               ].map(({ title, desc, Icon }, i) => (
-                <article key={title} className="glass-card p-6 text-left animate-fade-in" style={{animationDelay: `${0.05 * (i+1)}s`}}>
-                  <Icon className="text-primary mb-3" />
+                <article key={title} className={`relative group glass-card p-6 text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-elegant-hover ${i % 2 === 0 ? 'animate-fade-in-left' : 'animate-fade-in-right'}`} style={{animationDelay: `${0.06 * (i+1)}s`}}>
+                  <div className="absolute -top-3 -left-3 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs shadow-md animate-pulse-slow">{i+1}</div>
+                  <Icon className="text-primary mb-3 transition-transform duration-300 group-hover:scale-110" />
                   <h3 className="font-bree text-xl mb-1">{title}</h3>
                   <p className="text-foreground/80 text-sm">{desc}</p>
+                  <div className="mt-4 h-1 w-0 bg-accent rounded-full transition-all duration-500 group-hover:w-full" />
                 </article>
               ))}
             </div>
@@ -186,7 +190,7 @@ const Index = () => {
         </section>
 
         {/* Depoimentos (opcional) */}
-        <section id="depoimentos" className="bg-secondary">
+        <section id="depoimentos" className="bg-background">
           <div className="section-container">
             <SectionHeader title="Depoimentos" subtitle="O que nossos clientes dizem" />
             <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
