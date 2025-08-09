@@ -216,6 +216,48 @@ const Index = () => {
           </div>
         </section>
 
+        {/* Sobre o Consultor */}
+        <section id="consultor" className="bg-primary/5">
+          <div className="section-container">
+            <SectionHeader
+              title="Sobre o Consultor"
+              subtitle="Especialista em mapeamento de processos (BPMN) e diagnóstico operacional para clínicas."
+            />
+            <div className="grid md:grid-cols-2 gap-8 items-start">
+              <div className="relative animate-fade-in-left">
+                <div className="aspect-[4/5] rounded-2xl overflow-hidden border border-primary/15 bg-background shadow-elegant hover:-translate-y-1 hover:shadow-elegant-hover transition-all">
+                  <img
+                    src="/placeholder.svg"
+                    alt="Foto do consultor da TechClin"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <span className="absolute top-3 left-3 inline-flex items-center rounded-full bg-accent/20 text-accent px-3 py-1 text-xs shadow-sm animate-fade-in" style={{animationDelay:'0.2s'}}>BPMN | Dados | Saúde</span>
+              </div>
+              <div className="space-y-4 animate-fade-in-right">
+                <h3 className="font-bree text-2xl text-primary">Transformando operações com processos claros</h3>
+                <p className="text-foreground/80">Trabalho lado a lado com sua equipe para mapear o fluxo do paciente, identificar gargalos e entregar um relatório prático com recomendações priorizadas.</p>
+                <ul className="space-y-3">
+                  {[
+                    "Mapeamento visual completo (AS-IS) com BPMN",
+                    "Diagnóstico com evidências e métricas reais",
+                    "Recomendações de melhoria e automações (TO-BE)",
+                    "Resumo executivo legível para quem não conhece BPMN",
+                  ].map((item, i)=>(
+                    <li key={i} className="flex items-start gap-3">
+                      <CheckCircle className="text-primary shrink-0 mt-0.5" />
+                      <span className="text-foreground/80">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-2 h-1 w-24 bg-accent rounded-full animate-fade-in" style={{animationDelay:'0.3s'}} />
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Depoimentos (opcional) */}
         <section id="depoimentos" className="bg-background">
           <div className="section-container">
