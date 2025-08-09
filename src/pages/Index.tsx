@@ -225,7 +225,7 @@ const Index = () => {
             />
             <div className="grid md:grid-cols-2 gap-8 items-start">
               <div className="relative order-2 md:order-2 animate-fade-in-right md:justify-self-end">
-                <div className="aspect-[4/5] w-2/3 sm:w-1/2 md:w-2/3 max-w-[220px] mx-auto md:mx-0 rounded-2xl overflow-hidden border border-primary/15 bg-background shadow-elegant hover:-translate-y-1 hover:shadow-elegant-hover transition-all">
+                <div className="aspect-[4/5] w-3/4 sm:w-2/3 md:w-3/4 max-w-[320px] mx-auto md:mx-0 rounded-2xl overflow-hidden border border-primary/15 bg-background shadow-elegant hover:-translate-y-1 hover:shadow-elegant-hover transition-all">
                   <img
                     src="/placeholder.svg"
                     alt="Foto do consultor da TechClin"
