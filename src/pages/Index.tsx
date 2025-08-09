@@ -239,7 +239,7 @@ const Index = () => {
               <div className="space-y-4 animate-fade-in-right">
                 <h3 className="font-bree text-2xl text-primary">Transformando operações com processos claros</h3>
                 <p className="text-lg text-foreground/90">Estudante do Instituto Politécnico de Bragança, formado em Análise e Desenvolvimento de Sistemas (ADS) e certificado em Engenharia de Informática. Atua conectando operações, dados e tecnologia para gerar eficiência de ponta a ponta.</p>
-                <p className="text-foreground/80">Trabalho lado a lado com sua equipe para mapear o fluxo do paciente, identificar gargalos e entregar um relatório prático com recomendações priorizadas.</p>
+                
                 <ul className="space-y-3">
                   {[
                     "Mapeamento visual completo (AS-IS) com BPMN",
