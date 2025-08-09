@@ -1,8 +1,8 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
-import { CheckCircle, ArrowRight, Workflow, ClipboardList, MessageSquare } from "lucide-react";
-
+import { CheckCircle, ArrowRight, Workflow, ClipboardList, MessageSquare, PlayCircle } from "lucide-react";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 const SectionHeader = ({ title, subtitle }: { title: string; subtitle?: string }) => (
   <header className="mb-6 md:mb-10 text-center max-w-3xl mx-auto">
     <h2 className="font-bree text-3xl md:text-4xl lg:text-5xl tracking-tight text-primary mb-3">
@@ -225,7 +225,7 @@ const Index = () => {
             />
             <div className="grid md:grid-cols-2 gap-8 items-start">
               <div className="relative animate-fade-in-left">
-                <div className="aspect-[4/5] rounded-2xl overflow-hidden border border-primary/15 bg-background shadow-elegant hover:-translate-y-1 hover:shadow-elegant-hover transition-all">
+                <div className="aspect-[4/5] w-3/4 md:w-2/3 max-w-[260px] mx-auto md:mx-0 rounded-2xl overflow-hidden border border-primary/15 bg-background shadow-elegant hover:-translate-y-1 hover:shadow-elegant-hover transition-all">
                   <img
                     src="/placeholder.svg"
                     alt="Foto do consultor da TechClin"
@@ -238,6 +238,7 @@ const Index = () => {
               </div>
               <div className="space-y-4 animate-fade-in-right">
                 <h3 className="font-bree text-2xl text-primary">Transformando operações com processos claros</h3>
+                <p className="text-lg text-foreground/90">Estudante do Instituto Politécnico de Bragança, formado em Análise e Desenvolvimento de Sistemas (ADS) e certificado em Engenharia de Informática. Atua conectando operações, dados e tecnologia para gerar eficiência de ponta a ponta.</p>
                 <p className="text-foreground/80">Trabalho lado a lado com sua equipe para mapear o fluxo do paciente, identificar gargalos e entregar um relatório prático com recomendações priorizadas.</p>
                 <ul className="space-y-3">
                   {[
@@ -261,14 +262,24 @@ const Index = () => {
         {/* Depoimentos (opcional) */}
         <section id="depoimentos" className="bg-background">
           <div className="section-container">
-            <SectionHeader title="Depoimentos" subtitle="O que nossos clientes dizem" />
-            <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-              {[1,2].map((n) => (
-                <blockquote key={n} className="bg-white border rounded-xl p-6 animate-fade-in" style={{animationDelay: `${0.1 * n}s`}}>
-                  <p className="text-foreground/80 italic">“Conseguimos enxergar claramente nossos gargalos e implementar melhorias rápidas que reduziram o retrabalho.”</p>
-                  <footer className="mt-3 text-sm text-foreground/70">Diretora de Clínica — São Paulo</footer>
-                </blockquote>
-              ))}
+            <SectionHeader title="Depoimento em vídeo" subtitle="Bloco estático — substitua pelo seu vídeo quando quiser" />
+            <div className="max-w-3xl mx-auto animate-fade-in">
+              <div className="relative rounded-xl overflow-hidden border border-primary/15 bg-background shadow-elegant hover:shadow-elegant-hover transition-all">
+                <AspectRatio ratio={16 / 9}>
+                  <img
+                    src="/hero-image.jpg"
+                    alt="Miniatura do vídeo de depoimento"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div className="absolute inset-0 bg-background/20" aria-hidden />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <PlayCircle className="w-16 h-16 text-accent drop-shadow-md" />
+                  </div>
+                </AspectRatio>
+              </div>
+              <p className="text-center text-sm text-foreground/70 mt-2">Vídeo estático — substitua pela URL do seu vídeo posteriormente.</p>
             </div>
           </div>
         </section>
