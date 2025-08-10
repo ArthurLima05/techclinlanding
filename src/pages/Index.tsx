@@ -96,7 +96,7 @@ const Index = () => {
                     </li>
                   ))}
                 </ul>
-                <p className="text-sm text-foreground/70 bg-background/60 rounded-lg p-3 border border-primary/10 mx-auto max-w-md text-center md:text-left">
+                <p className="text-sm text-foreground/70 bg-background/60 rounded-lg p-3 border border-primary/10 mx-auto md:mx-0 max-w-md md:max-w-none text-center md:text-left">
                   Sem conhecimento em fluxos? Você recebe uma explicação clara e visual junto com uma descrição legível,
                   sem jargões, para toda a equipe entender.
                 </p>
