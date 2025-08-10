@@ -82,7 +82,7 @@ const Index = () => {
               <div className="space-y-4 animate-fade-in-left text-center md:text-left mx-auto md:mx-0">
                 <span className="inline-block rounded-full bg-accent/15 text-accent px-3 py-1 text-xs mx-auto md:mx-0">BPMN + Dados Reais</span>
                 <h3 className="font-bree text-2xl">O que você recebe</h3>
-                <ul className="space-y-3 mx-auto max-w-md text-left">
+                <ul className="space-y-3 mx-auto md:mx-0 max-w-md md:max-w-none text-center md:text-left">
                   {[
                     "Mapeamento completo do fluxo do paciente em BPMN (AS-IS)",
                     "Problemas e gargalos identificados com evidências",
@@ -90,7 +90,7 @@ const Index = () => {
                     "Métricas e dados reais que comprovam o impacto esperado",
                     "Versão legível para quem não conhece BPMN (resumo executivo)"
                   ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-3">
+                     <li key={i} className="flex items-start gap-3 mx-auto md:mx-0">
                       <CheckCircle className="text-primary shrink-0 mt-0.5" />
                       <span className="text-foreground/80">{item}</span>
                     </li>
