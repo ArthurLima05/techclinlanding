@@ -196,7 +196,7 @@ const Index = () => {
         </section>
 
         {/* Problemas que resolvemos */}
-        <section id="problemas" className="bg-background">
+        <section id="problemas" className="bg-primary/10">
           <div className="section-container">
             <SectionHeader title="Problemas que podemos ajudar a resolver" />
             <ul className="max-w-4xl mx-auto grid md:grid-cols-2 gap-3">
