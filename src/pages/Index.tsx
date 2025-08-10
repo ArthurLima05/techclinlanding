@@ -78,8 +78,8 @@ const Index = () => {
               title="Relatório TechClin: Mapeamento e Diagnóstico BPMN"
               subtitle="Entenda com clareza como sua clínica funciona hoje e tenha um plano de ação baseado em dados reais."
             />
-            <div className="grid md:grid-cols-2 gap-8 items-start md:items-stretch">
-              <div className="space-y-4 animate-fade-in-left text-center md:text-left mx-auto md:mx-0 flex flex-col h-full">
+            <div className="grid md:grid-cols-2 gap-8 items-start">
+              <div className="space-y-4 animate-fade-in-left text-center md:text-left mx-auto md:mx-0">
                 <span className="inline-block rounded-full bg-accent/15 text-accent px-3 py-1 text-xs mx-auto md:mx-0">BPMN + Dados Reais</span>
                 <h3 className="font-bree text-2xl">O que você recebe</h3>
                 <ul className="space-y-3 mx-auto md:mx-0 max-w-md md:max-w-none text-center md:text-left">
@@ -96,7 +96,7 @@ const Index = () => {
                     </li>
                   ))}
                 </ul>
-                <p className="text-sm text-foreground/70 bg-background/60 rounded-lg p-3 border border-primary/10 mt-6 md:mt-auto mx-auto md:mx-0 max-w-md md:max-w-none text-center md:text-left">
+                <p className="text-sm text-foreground/70 bg-background/60 rounded-lg p-3 border border-primary/10 mx-auto md:mx-0 max-w-md md:max-w-none text-center md:text-left">
                   Sem conhecimento em fluxos? Você recebe uma explicação clara e visual junto com uma descrição legível,
                   sem jargões, para toda a equipe entender.
                 </p>
