@@ -113,6 +113,14 @@ const Index = () => {
                 <p className="text-xs text-foreground/60 mt-2">Espaço reservado para inserir a imagem do mapeamento (BPMN).</p>
               </div>
             </div>
+            <div className="mt-6 text-center">
+              <a href="#contato">
+                <Button variant="outline" className="border-accent text-accent hover:bg-accent/20">
+                  Quero receber o relatório
+                  <ArrowRight className="ml-2" />
+                </Button>
+              </a>
+            </div>
           </div>
         </section>
 
@@ -139,6 +147,14 @@ const Index = () => {
                 <h3 className="font-bree text-xl mb-2">Plano de ação</h3>
                 <p className="text-foreground/80">Recomendações claras (TO-BE), próximos passos e impacto esperado por iniciativa.</p>
               </article>
+            </div>
+            <div className="mt-6 text-center">
+              <a href="#contato">
+                <Button className="bg-accent text-accent-foreground hover:bg-accent/90">
+                  Solicitar amostra do relatório
+                  <ArrowRight className="ml-2" />
+                </Button>
+              </a>
             </div>
           </div>
         </section>
@@ -168,6 +184,14 @@ const Index = () => {
               </div>
             </div>
             <p className="text-center text-sm text-foreground/70 mt-4">Todos os valores são personalizados conforme o escopo.</p>
+            <div className="mt-6 text-center">
+              <a href="#contato">
+                <Button className="bg-accent text-accent-foreground hover:bg-accent/90">
+                  Solicitar proposta
+                  <ArrowRight className="ml-2" />
+                </Button>
+              </a>
+            </div>
           </div>
         </section>
 
@@ -190,6 +214,14 @@ const Index = () => {
                   </li>
               ))}
             </ul>
+            <div className="mt-6 text-center">
+              <a href="#contato">
+                <Button variant="outline" className="border-accent text-accent hover:bg-accent/20">
+                  Quero resolver esses problemas
+                  <ArrowRight className="ml-2" />
+                </Button>
+              </a>
+            </div>
           </div>
         </section>
 
@@ -212,6 +244,14 @@ const Index = () => {
                     <div className="mt-4 h-1 w-0 bg-accent rounded-full transition-all duration-500 group-hover:w-full" />
                   </article>
               ))}
+            </div>
+            <div className="mt-6 text-center">
+              <a href="#contato">
+                <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
+                  Agendar reunião detalhada
+                  <ArrowRight className="ml-2" />
+                </Button>
+              </a>
             </div>
           </div>
         </section>
