@@ -147,7 +147,7 @@
   }
 
   .section-title {
-    @apply text-3xl md:text-4xl lg:text-5xl font-bree font-bold tracking-tight;
+    @apply text-3xl md:text-4xl lg:text-5xl font-bree font-bold tracking-normal md:tracking-wide;
   }
 
   .section-subtitle {
