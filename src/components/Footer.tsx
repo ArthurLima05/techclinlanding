@@ -17,7 +17,7 @@ const Footer = () => {
               />
               <p className="font-bree text-lg md:text-xl">TechClin</p>
             </div>
-            <p className="text-sm opacity-90">Consultoria tecnológica para clínicas médicas</p>
+            <p className="text-sm opacity-90">Soluções Tech em Clínicas de Sáude</p>
           </div>
           <div className="text-sm space-y-1 text-center md:text-right">
             <p>
