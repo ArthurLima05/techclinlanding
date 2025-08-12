@@ -71,7 +71,105 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Relatório e Mapeamento */}
+        {/* Depoimento forte (logo após o Hero) */}
+        <section id="depoimentos" className="bg-background">
+          <div className="section-container">
+            <SectionHeader title="Depoimento em vídeo" subtitle="Veja um exemplo rápido do impacto do trabalho" />
+            <VideoTestimonials />
+          </div>
+        </section>
+
+        {/* Sobre o Consultor */}
+        <section id="consultor" className="bg-primary/5">
+          <div className="section-container">
+            <SectionHeader
+              title="Sobre o Consultor"
+              subtitle="Especialista em mapeamento de processos (BPMN) e diagnóstico operacional para clínicas."
+            />
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div className="relative order-1 md:order-2 animate-fade-in-right md:justify-self-center md:self-center">
+                <div className="aspect-[4/5] w-3/4 sm:w-2/3 md:w-4/5 max-w-[320px] md:max-w-[360px] mx-auto md:mx-auto rounded-2xl overflow-hidden border border-primary/15 bg-background shadow-elegant hover:-translate-y-1 hover:shadow-elegant-hover transition-all">
+                  <img
+                    src="/placeholder.svg"
+                    alt="Foto do consultor da TechClin"
+                    className="w-full h-full object-cover"
+                    decoding="async"
+                  />
+                </div>
+                <span className="absolute top-3 left-3 inline-flex items-center rounded-full bg-accent/20 text-accent px-3 py-1 text-xs shadow-sm animate-fade-in" style={{ animationDelay: '0.2s' }}>BPMN | Dados | AI</span>
+                <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-background/80 backdrop-blur rounded-full border border-primary/15 px-3 py-1 text-xs shadow-elegant">Arthur Lima, consultor TechClin</div>
+              </div>
+              <div className="order-2 md:order-1 space-y-4 animate-fade-in-left text-center md:text-left">
+                <h3 className="font-bree text-xl md:text-2xl text-primary">Transformando operações com processos claros</h3>
+                <p className="text-lg text-foreground/90">Estudante do Instituto Politécnico de Bragança, formado em Análise e Desenvolvimento de Sistemas (ADS) e certificado em Engenharia de Informática. Atua conectando operações, dados e tecnologia para gerar eficiência de ponta a ponta.</p>
+
+                <ul className="space-y-3">
+                  {[
+                    "Mapeamento visual completo (AS-IS) com BPMN",
+                    "Diagnóstico com evidências e métricas reais",
+                    "Recomendações de melhoria e automações (TO-BE)",
+                    "Resumo executivo legível para quem não conhece BPMN",
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <CheckCircle className="text-primary shrink-0 mt-0.5" />
+                      <span className="text-foreground/80">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-2 h-1 w-24 bg-accent rounded-full animate-fade-in" style={{ animationDelay: '0.3s' }} />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Como funciona (resumo) */}
+        <section id="processo-resumo" className="bg-background">
+          <div className="section-container">
+            <SectionHeader title="Como funciona (resumo)" subtitle="Uma visão rápida do caminho até o resultado" />
+            <div className="grid md:grid-cols-3 gap-6">
+              {[
+                { title: 'Reunião e mapeamento', desc: 'Entendimento do fluxo do paciente e do contexto.', Icon: Workflow },
+                { title: 'Diagnóstico', desc: 'Gargalos priorizados com evidências e métricas.', Icon: ClipboardList },
+                { title: 'Plano e implantação', desc: 'Ações recomendadas e suporte na adoção.', Icon: CheckCircle },
+              ].map(({ title, desc, Icon }, i) => (
+                <article key={title} className={`glass-card p-6 text-left transition-all duration-500 hover:-translate-y-1 hover:shadow-elegant-hover ${i === 0 ? 'animate-fade-in-left' : i === 2 ? 'animate-fade-in-right' : 'animate-fade-in'}`} style={{ animationDelay: `${0.08 * (i + 1)}s` }}>
+                  <Icon className="text-primary mb-3" />
+                  <h3 className="font-bree text-xl mb-1">{title}</h3>
+                  <p className="text-foreground/80 text-sm">{desc}</p>
+                </article>
+              ))}
+            </div>
+            <div className="mt-6 text-center">
+              <a href="#processo">
+                <Button variant="outline" className="border-accent text-accent hover:bg-accent/20">
+                  Ver processo detalhado
+                  <ArrowRight className="ml-2" />
+                </Button>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* Prova social / Casos de sucesso */}
+        <section id="prova-social" className="bg-primary/10">
+          <div className="section-container">
+            <SectionHeader title="Prova social" subtitle="Resultados e experiências de quem já passou pelo processo" />
+            <div className="grid md:grid-cols-3 gap-6">
+              {[
+                { quote: 'Reduzimos o tempo de atendimento em 23% em 60 dias.', author: 'Clínica Vida Plena' },
+                { quote: 'O fluxo padronizado eliminou retrabalhos e erros de agenda.', author: 'Instituto Bem Cuidar' },
+                { quote: 'Relatório claro, com dados — decisão ficou muito mais fácil.', author: 'Grupo Saúde+ ' },
+              ].map((t, i) => (
+                <blockquote key={i} className={`glass-card p-6 italic text-foreground/90 border border-primary/15 ${i % 2 === 0 ? 'animate-fade-in-left' : 'animate-fade-in-right'}`} style={{ animationDelay: `${0.06 * (i + 1)}s` }}>
+                  “{t.quote}”
+                  <footer className="not-italic mt-3 text-sm text-foreground/70">— {t.author}</footer>
+                </blockquote>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Relatório TechClin: Mapeamento e Diagnóstico BPMN */}
         <section id="sobre" className="bg-primary/5">
           <div className="section-container">
             <SectionHeader
@@ -123,7 +221,7 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Diferenciais do Relatório */}
+        {/* Por que nosso relatório funciona */}
         <section id="bpmn" className="bg-primary/5">
           <div className="section-container">
             <SectionHeader
@@ -224,7 +322,7 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Como funciona o processo */}
+        {/* Como funciona o processo (detalhado) */}
         <section id="processo" className="bg-primary/5">
           <div className="section-container">
             <SectionHeader title="Como funciona o processo" />
@@ -252,57 +350,6 @@ const Index = () => {
                 </Button>
               </a>
             </div>
-          </div>
-        </section>
-
-        {/* Sobre o Consultor */}
-        <section id="consultor" className="bg-primary/5">
-          <div className="section-container">
-            <SectionHeader
-              title="Sobre o Consultor"
-              subtitle="Especialista em mapeamento de processos (BPMN) e diagnóstico operacional para clínicas."
-            />
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="relative order-1 md:order-2 animate-fade-in-right md:justify-self-center md:self-center">
-                <div className="aspect-[4/5] w-3/4 sm:w-2/3 md:w-4/5 max-w-[320px] md:max-w-[360px] mx-auto md:mx-auto rounded-2xl overflow-hidden border border-primary/15 bg-background shadow-elegant hover:-translate-y-1 hover:shadow-elegant-hover transition-all">
-                  <img
-                    src="/placeholder.svg"
-                    alt="Foto do consultor da TechClin"
-                    className="w-full h-full object-cover"
-                    decoding="async"
-                  />
-                </div>
-                <span className="absolute top-3 left-3 inline-flex items-center rounded-full bg-accent/20 text-accent px-3 py-1 text-xs shadow-sm animate-fade-in" style={{ animationDelay: '0.2s' }}>BPMN | Dados | AI</span>
-                <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-background/80 backdrop-blur rounded-full border border-primary/15 px-3 py-1 text-xs shadow-elegant">Arthur Lima, consultor TechClin</div>
-              </div>
-              <div className="order-2 md:order-1 space-y-4 animate-fade-in-left text-center md:text-left">
-                <h3 className="font-bree text-xl md:text-2xl text-primary">Transformando operações com processos claros</h3>
-                <p className="text-lg text-foreground/90">Estudante do Instituto Politécnico de Bragança, formado em Análise e Desenvolvimento de Sistemas (ADS) e certificado em Engenharia de Informática. Atua conectando operações, dados e tecnologia para gerar eficiência de ponta a ponta.</p>
-
-                <ul className="space-y-3">
-                  {[
-                    "Mapeamento visual completo (AS-IS) com BPMN",
-                    "Diagnóstico com evidências e métricas reais",
-                    "Recomendações de melhoria e automações (TO-BE)",
-                    "Resumo executivo legível para quem não conhece BPMN",
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <CheckCircle className="text-primary shrink-0 mt-0.5" />
-                      <span className="text-foreground/80">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-2 h-1 w-24 bg-accent rounded-full animate-fade-in" style={{ animationDelay: '0.3s' }} />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Depoimentos (opcional) */}
-        <section id="depoimentos" className="bg-background">
-          <div className="section-container">
-            <SectionHeader title="Depoimentos em vídeo" subtitle="Carrossel estático — você poderá inserir vários vídeos depois" />
-            <VideoTestimonials />
           </div>
         </section>
 
