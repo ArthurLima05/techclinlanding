@@ -121,33 +121,6 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Como funciona (resumo) */}
-        <section id="processo-resumo" className="bg-background">
-          <div className="section-container">
-            <SectionHeader title="Como funciona (resumo)" subtitle="Uma visão rápida do caminho até o resultado" />
-            <div className="grid md:grid-cols-3 gap-6">
-              {[
-                { title: 'Reunião e mapeamento', desc: 'Entendimento do fluxo do paciente e do contexto.', Icon: Workflow },
-                { title: 'Diagnóstico', desc: 'Gargalos priorizados com evidências e métricas.', Icon: ClipboardList },
-                { title: 'Plano e implantação', desc: 'Ações recomendadas e suporte na adoção.', Icon: CheckCircle },
-              ].map(({ title, desc, Icon }, i) => (
-                <article key={title} className={`glass-card p-6 text-left transition-all duration-500 hover:-translate-y-1 hover:shadow-elegant-hover ${i === 0 ? 'animate-fade-in-left' : i === 2 ? 'animate-fade-in-right' : 'animate-fade-in'}`} style={{ animationDelay: `${0.08 * (i + 1)}s` }}>
-                  <Icon className="text-primary mb-3" />
-                  <h3 className="font-bree text-xl mb-1">{title}</h3>
-                  <p className="text-foreground/80 text-sm">{desc}</p>
-                </article>
-              ))}
-            </div>
-            <div className="mt-6 text-center">
-              <a href="#processo">
-                <Button variant="outline" className="border-accent text-accent hover:bg-accent/20">
-                  Ver processo detalhado
-                  <ArrowRight className="ml-2" />
-                </Button>
-              </a>
-            </div>
-          </div>
-        </section>
 
         {/* Prova social / Casos de sucesso */}
         <section id="prova-social" className="bg-primary/10">
@@ -324,7 +297,7 @@ const Index = () => {
         {/* Como funciona o processo (detalhado) */}
         <section id="processo" className="bg-primary/5">
           <div className="section-container">
-            <SectionHeader title="Como funciona o processo" />
+            <SectionHeader title="Como funciona (resumo)" />
             <div className="grid md:grid-cols-4 gap-6">
               {[
                 { title: "Reunião detalhada (BPMN)", desc: "Entendimento profundo do funcionamento da clínica e dos fluxos do paciente.", Icon: Workflow },
