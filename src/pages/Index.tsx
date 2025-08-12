@@ -263,7 +263,7 @@ const Index = () => {
               subtitle="Especialista em mapeamento de processos (BPMN) e diagnóstico operacional para clínicas."
             />
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="relative order-2 md:order-2 animate-fade-in-right md:justify-self-center md:self-center">
+              <div className="relative order-1 md:order-2 animate-fade-in-right md:justify-self-center md:self-center">
                 <div className="aspect-[4/5] w-3/4 sm:w-2/3 md:w-4/5 max-w-[320px] md:max-w-[360px] mx-auto md:mx-auto rounded-2xl overflow-hidden border border-primary/15 bg-background shadow-elegant hover:-translate-y-1 hover:shadow-elegant-hover transition-all">
                   <img
                     src="/placeholder.svg"
@@ -275,8 +275,8 @@ const Index = () => {
                 <span className="absolute top-3 left-3 inline-flex items-center rounded-full bg-accent/20 text-accent px-3 py-1 text-xs shadow-sm animate-fade-in" style={{ animationDelay: '0.2s' }}>BPMN | Dados | Saúde</span>
                 <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-background/80 backdrop-blur rounded-full border border-primary/15 px-3 py-1 text-xs shadow-elegant">Arthur Lima, consultor TechClin</div>
               </div>
-              <div className="order-1 md:order-1 space-y-4 animate-fade-in-left text-center md:text-left">
-                <h3 className="font-bree text-2xl text-primary">Transformando operações com processos claros</h3>
+              <div className="order-2 md:order-1 space-y-4 animate-fade-in-left text-center md:text-left">
+                <h3 className="font-bree text-xl md:text-2xl text-primary">Transformando operações com processos claros</h3>
                 <p className="text-lg text-foreground/90">Estudante do Instituto Politécnico de Bragança, formado em Análise e Desenvolvimento de Sistemas (ADS) e certificado em Engenharia de Informática. Atua conectando operações, dados e tecnologia para gerar eficiência de ponta a ponta.</p>
 
                 <ul className="space-y-3">

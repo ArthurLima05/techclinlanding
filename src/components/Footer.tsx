@@ -7,7 +7,16 @@ const Footer = () => {
       <div className="section-container">
         <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-6">
           <div className="text-center md:text-left">
-            <p className="font-bree text-lg">TechClin</p>
+            <div className="flex items-center justify-center md:justify-start gap-2 md:gap-3">
+              <img
+                src="/lovable-uploads/c8a83320-7c65-4173-96d2-ba83c08d1f99.png"
+                alt="Logo TechClin"
+                className="h-7 w-auto md:h-8 drop-shadow-sm"
+                loading="lazy"
+                decoding="async"
+              />
+              <p className="font-bree text-lg md:text-xl">TechClin</p>
+            </div>
             <p className="text-sm opacity-90">Consultoria tecnológica para clínicas médicas</p>
           </div>
           <div className="text-sm space-y-1 text-center md:text-right">
