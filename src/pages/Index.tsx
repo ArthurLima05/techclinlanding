@@ -101,17 +101,13 @@ const Index = () => {
               </div>
               <div className="order-2 md:order-1 space-y-4 animate-fade-in-left text-center md:text-left">
                 <h3 className="font-bree text-xl md:text-2xl text-primary">Transformando operações com processos claros</h3>
-                <p className="text-lg text-foreground/90">Arthur, 20 anos, vive em Portugal, onde se dedica a estudar Inteligência Artificial, automações e engenharia de software pelo Instituto Politécnico de Bragança, sempre aplicando o que aprende em projetos reais. É também graduando em Análise e Desenvolvimento de Sistemas pela CESAR School, uma das principais faculdades de Tecnologia da Informação e Inovação do Brasil.
-                  Lá, atuou em projetos pelo Porto Digital, o maior parque tecnológico do país, levando soluções que conectam gestão, liderança, fluxos e TI para gerar mais eficiência.
-                  Além do português, tem conhecimento em inglês e francês, o que amplia sua visão e atuação em diferentes contextos.</p>
+                <p className="text-lg text-foreground/90">Arthur, 20 anos, vive no Norte de Portugal estudando Inteligência Artificial e engenharia de software no Instituto Politécnico de Bragança e cursa ADS na CESAR School, referência nacional em TI e inovação. Com experiência em projetos no Porto Digital, maior parque tecnológico do Brasil, integra gestão, dados e automação para gerar eficiência. Além do português, tem conhecimento em inglês e francês.</p>
 
                 <ul className="space-y-3">
                   {[
                     "Experiência em mapeamento e otimização de processos para diferentes áreas de negócios",
-                    "Atuação em projetos de transformação digital no Porto Digital",
                     "Certificações em Inteligência Artificial (Machine Learning e Generative AI)",
                     "Especialista em automações com ferramentas como n8n",
-                    "Visão estratégica aliada a soluções tecnológicas para aumento de eficiência",
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-3">
                       <CheckCircle className="text-primary shrink-0 mt-0.5" />
