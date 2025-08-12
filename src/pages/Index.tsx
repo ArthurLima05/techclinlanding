@@ -122,6 +122,37 @@ const Index = () => {
         </section>
 
 
+        {/* Como funciona */}
+        <section id="processo" className="bg-primary/5">
+          <div className="section-container">
+            <SectionHeader title="Como funciona" />
+            <div className="grid md:grid-cols-4 gap-6">
+              {[
+                { title: "Reunião detalhada (BPMN)", desc: "Entendimento profundo do funcionamento da clínica e dos fluxos do paciente.", Icon: Workflow },
+                { title: "Relatório e diagnóstico", desc: "Documento com o modelo atual, problemas e recomendações priorizadas.", Icon: ClipboardList },
+                { title: "Soluções personalizadas", desc: "Desenvolvimento do que for mais adequado — valores sob consulta.", Icon: MessageSquare },
+                { title: "Suporte e acompanhamento", desc: "Apoio contínuo para garantir a adoção e medir resultados.", Icon: CheckCircle },
+              ].map(({ title, desc, Icon }, i) => (
+                <article key={title} className={`relative group glass-card p-6 text-left transition-all duration-500 hover:-translate-y-1 hover:shadow-elegant-hover hover:scale-[1.02] hover:rotate-[0.5deg] ${i % 2 === 0 ? 'animate-fade-in-left' : 'animate-fade-in-right'}`} style={{ animationDelay: `${0.06 * (i + 1)}s` }}>
+                  <div className="absolute -top-3 -left-3 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs shadow-md animate-pulse-slow">{i + 1}</div>
+                  <Icon className="text-primary mb-3 transition-transform duration-300 group-hover:scale-110" />
+                  <h3 className="font-bree text-xl mb-1">{title}</h3>
+                  <p className="text-foreground/80 text-sm">{desc}</p>
+                  <div className="mt-4 h-1 w-0 bg-accent rounded-full transition-all duration-500 group-hover:w-full" />
+                </article>
+              ))}
+            </div>
+            <div className="mt-6 text-center">
+              <a href="#contato">
+                <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
+                  Agendar reunião detalhada
+                  <ArrowRight className="ml-2" />
+                </Button>
+              </a>
+            </div>
+          </div>
+        </section>
+
         {/* Prova social / Casos de sucesso */}
         <section id="prova-social" className="bg-primary/10">
           <div className="section-container">
@@ -294,36 +325,6 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Como funciona o processo (detalhado) */}
-        <section id="processo" className="bg-primary/5">
-          <div className="section-container">
-            <SectionHeader title="Como funciona (resumo)" />
-            <div className="grid md:grid-cols-4 gap-6">
-              {[
-                { title: "Reunião detalhada (BPMN)", desc: "Entendimento profundo do funcionamento da clínica e dos fluxos do paciente.", Icon: Workflow },
-                { title: "Relatório e diagnóstico", desc: "Documento com o modelo atual, problemas e recomendações priorizadas.", Icon: ClipboardList },
-                { title: "Soluções personalizadas", desc: "Desenvolvimento do que for mais adequado — valores sob consulta.", Icon: MessageSquare },
-                { title: "Suporte e acompanhamento", desc: "Apoio contínuo para garantir a adoção e medir resultados.", Icon: CheckCircle },
-              ].map(({ title, desc, Icon }, i) => (
-                <article key={title} className={`relative group glass-card p-6 text-left transition-all duration-500 hover:-translate-y-1 hover:shadow-elegant-hover hover:scale-[1.02] hover:rotate-[0.5deg] ${i % 2 === 0 ? 'animate-fade-in-left' : 'animate-fade-in-right'}`} style={{ animationDelay: `${0.06 * (i + 1)}s` }}>
-                  <div className="absolute -top-3 -left-3 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs shadow-md animate-pulse-slow">{i + 1}</div>
-                  <Icon className="text-primary mb-3 transition-transform duration-300 group-hover:scale-110" />
-                  <h3 className="font-bree text-xl mb-1">{title}</h3>
-                  <p className="text-foreground/80 text-sm">{desc}</p>
-                  <div className="mt-4 h-1 w-0 bg-accent rounded-full transition-all duration-500 group-hover:w-full" />
-                </article>
-              ))}
-            </div>
-            <div className="mt-6 text-center">
-              <a href="#contato">
-                <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
-                  Agendar reunião detalhada
-                  <ArrowRight className="ml-2" />
-                </Button>
-              </a>
-            </div>
-          </div>
-        </section>
 
         {/* CTA Final */}
         <section id="contato" className="bg-primary text-primary-foreground">
