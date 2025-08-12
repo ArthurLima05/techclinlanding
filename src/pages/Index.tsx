@@ -30,12 +30,16 @@ const Index = () => {
               />
               <span className="font-bree text-xl md:text-2xl tracking-tight">TechClin</span>
             </a>
-            <a href="#contato" className="hidden md:inline-flex">
-              <Button className="bg-accent text-accent-foreground hover:bg-accent/90">
+            <div className="hidden md:inline-flex">
+              <Button
+                className="bg-accent text-accent-foreground hover:bg-accent/90"
+                onClick={(e) => { e.preventDefault(); import("@/lib/lead-modal").then(m => m.openLeadModal()); }}
+              >
                 Agendar consultoria
                 <ArrowRight className="ml-2" />
               </Button>
-            </a>
+            </div>
+
           </nav>
         </div>
       </header>
@@ -331,12 +335,14 @@ const Index = () => {
           <div className="section-container text-center">
             <h2 className="font-bree text-3xl md:text-4xl mb-2">Pronto para dar o próximo passo?</h2>
             <p className="text-primary-foreground/90 mb-6">Agende sua consultoria e receba um diagnóstico claro com recomendações práticas.</p>
-            <a href="mailto:contato@techclin.com">
-              <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
+            <div>
+              <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90"
+                onClick={(e) => { e.preventDefault(); import("@/lib/lead-modal").then(m => m.openLeadModal()); }}
+              >
                 Agendar consultoria por e-mail
                 <ArrowRight className="ml-2" />
               </Button>
-            </a>
+            </div>
           </div>
         </section>
       </main>
