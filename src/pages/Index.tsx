@@ -272,7 +272,7 @@ const Index = () => {
                     decoding="async"
                   />
                 </div>
-                <span className="absolute top-3 left-3 inline-flex items-center rounded-full bg-accent/20 text-accent px-3 py-1 text-xs shadow-sm animate-fade-in" style={{ animationDelay: '0.2s' }}>BPMN | Dados | Saúde</span>
+                <span className="absolute top-3 left-3 inline-flex items-center rounded-full bg-accent/20 text-accent px-3 py-1 text-xs shadow-sm animate-fade-in" style={{ animationDelay: '0.2s' }}>BPMN | Dados | AI</span>
                 <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-background/80 backdrop-blur rounded-full border border-primary/15 px-3 py-1 text-xs shadow-elegant">Arthur Lima, consultor TechClin</div>
               </div>
               <div className="order-2 md:order-1 space-y-4 animate-fade-in-left text-center md:text-left">
