@@ -231,8 +231,40 @@ const Index = () => {
         </section>
 
 
+        {/* Soluções Personalizadas */}
+        <section id="solucoes" className="bg-background">
+          <div className="section-container">
+            <SectionHeader
+              title="Soluções personalizadas para sua clínica"
+              subtitle="Cada empresa é única. Entregamos desde pequenas automações até aplicações sob medida — valores sempre sob consulta."
+            />
+            <div className="grid md:grid-cols-3 gap-6 xs:gap-8">
+              {[
+                { title: "Integrações com WhatsApp", desc: "Automatize confirmações, agendamentos e lembretes integrando com o fluxo da sua recepção.", Icon: MessageSquare },
+                { title: "Pequenas automações", desc: "Reduza tarefas repetitivas com automações que conectam sistemas já utilizados pela sua equipe.", Icon: Workflow },
+                { title: "Aplicações específicas", desc: "Desenvolvimento de soluções sob medida para necessidades muito específicas da sua operação.", Icon: ClipboardList },
+              ].map(({ title, desc, Icon }, i) => (
+                <article key={title} className={`glass-card p-6 xs:p-8 text-center transition-all duration-500 hover:-translate-y-2 hover:shadow-elegant-hover ${i % 2 === 0 ? 'animate-fade-in-left' : 'animate-fade-in-right'}`} style={{ animationDelay: `${0.1 * (i + 1)}s` }}>
+                  <Icon className="text-primary mb-4 xs:mb-6 w-8 h-8 xs:w-10 xs:h-10 mx-auto" />
+                  <h3 className="font-bree text-xl xs:text-2xl mb-2 xs:mb-3 leading-tight">{title}</h3>
+                  <p className="text-foreground/80 text-base xs:text-lg leading-relaxed">{desc}</p>
+                </article>
+              ))}
+            </div>
+            <div className="mt-6 xs:mt-8 text-center">
+              <p className="text-sm xs:text-base text-foreground/70 mb-4">Todos os valores são personalizados conforme o escopo.</p>
+              <a href="#contato">
+                <Button variant="outline" className="border-accent text-accent hover:bg-accent/20">
+                  Solicitar proposta
+                  <ArrowRight className="ml-2" />
+                </Button>
+              </a>
+            </div>
+          </div>
+        </section>
+
         {/* Resultados Visuais */}
-        <section id="resultados" className="bg-background">
+        <section id="resultados" className="bg-primary/5">
           <div className="section-container">
             <SectionHeader
               title="Resultados que você pode ver"
@@ -249,6 +281,11 @@ const Index = () => {
                   <div className="text-3xl xs:text-4xl font-bree text-accent mb-2">40%</div>
                   <h3 className="font-bree text-lg xs:text-xl mb-1">Menos retrabalho</h3>
                   <p className="text-sm xs:text-base text-foreground/80">Processos padronizados eliminam erros</p>
+                </div>
+                <div className="bg-primary/5 rounded-2xl p-6 xs:p-8 border border-primary/10">
+                  <div className="text-3xl xs:text-4xl font-bree text-primary mb-2">15 dias</div>
+                  <h3 className="font-bree text-lg xs:text-xl mb-1">Tempo médio de implementação</h3>
+                  <p className="text-sm xs:text-base text-foreground/80">Do diagnóstico à primeira melhoria ativa</p>
                 </div>
               </div>
               <div className="relative animate-fade-in-right">
