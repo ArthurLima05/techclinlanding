@@ -90,7 +90,7 @@ const Index = () => {
           <div className="section-container">
             <SectionHeader
               title="Sobre o Consultor"
-              subtitle="vive no Norte de Portugal estudando Inteligência Artificial e engenharia de software no Instituto Politécnico de Bragança e cursa ADS na CESAR School, referência nacional em TI e inovação. Com experiência em projetos no Porto Digital, maior parque tecnológico do Brasil, integra gestão, dados e automação para gerar eficiência. Além do português, tem conhecimento em inglês e francês."
+              subtitle="Especialista em mapeamento e otimizações de processos, conectando tecnologia, dados e gestão para tornar o atendimento mais eficiente e claro."
             />
             <div className="grid md:grid-cols-2 gap-6 xs:gap-8 items-center">
               <div className="relative order-1 md:order-2 animate-fade-in-right md:justify-self-center md:self-center">
@@ -107,7 +107,7 @@ const Index = () => {
               </div>
               <div className="order-2 md:order-1 space-y-3 xs:space-y-4 animate-fade-in-left text-center md:text-left px-2 xs:px-0">
                 <h3 className="font-bree text-lg xs:text-xl md:text-2xl text-primary">Transformando operações com processos claros</h3>
-                <p className="text-base xs:text-lg md:text-xl text-foreground/90 leading-relaxed">Especialista em automação e processos, com experiência no Porto Digital e formação em IA. Transforma operações complexas em fluxos simples e eficientes.</p>
+                <p className="text-base xs:text-lg md:text-xl text-foreground/90 leading-relaxed">Especialista em automação e processos, vive no Norte de Portugal estudando Inteligência Artificial no Instituto Politécnico de Bragança e cursa ADS na CESAR School, referência nacional em TI e inovação. Com experiência em projetos no Porto Digital, maior parque tecnológico do Brasil.Além do português, tem conhecimento em inglês e francês.</p>
 
                 <ul className="space-y-3 xs:space-y-4">
                   {[
