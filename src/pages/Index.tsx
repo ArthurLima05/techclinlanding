@@ -282,7 +282,7 @@ const Index = () => {
                   <p className="text-sm xs:text-base text-foreground/80">Processos padronizados eliminam erros</p>
                 </div>
                 <div className="bg-primary/5 rounded-2xl p-6 xs:p-8 border border-primary/10">
-                  <div className="text-3xl xs:text-4xl font-bree text-primary mb-2">15 dias</div>
+                  <div className="text-3xl xs:text-4xl font-bree text-primary mb-2">30 dias</div>
                   <h3 className="font-bree text-lg xs:text-xl mb-1">Tempo médio de implementação</h3>
                   <p className="text-sm xs:text-base text-foreground/80">Do diagnóstico à primeira melhoria ativa</p>
                 </div>

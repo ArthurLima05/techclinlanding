@@ -80,7 +80,6 @@ const LeadCaptureDialog: React.FC = () => {
               {loading ? "Enviando..." : "Enviar"}
             </Button>
           </div>
-          <p className="text-sm text-foreground/70">Seus dados serão usados apenas para envio da amostra do relatório.</p>
         </form>
       </DialogContent>
     </Dialog>
