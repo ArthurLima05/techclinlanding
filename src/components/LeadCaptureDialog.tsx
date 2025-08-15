@@ -45,6 +45,9 @@ const LeadCaptureDialog: React.FC = () => {
       toast({ title: "Tudo certo!", description: "Recebemos seus dados e entraremos em contato." });
       setOpen(false);
       setForm({ nome: "", email: "", telefone: "" });
+      
+      // Redirect to Notion page
+      window.open("https://www.notion.so/Modelagem-e-Melhoria-de-Processos-Vida-Plena-23d89179d96f8018beb5c50fc4e3b8c0", "_blank");
     } catch (err) {
       toast({ title: "Erro ao enviar", description: "Tente novamente em instantes.", variant: "destructive" });
     } finally {

@@ -92,7 +92,7 @@ const Index = () => {
               subtitle="Especialista em mapeamento e otimizações de processos, conectando tecnologia, dados e gestão para tornar o atendimento mais eficiente e claro."
             />
             <div className="grid md:grid-cols-2 gap-6 xs:gap-8 items-center">
-              <div className="relative order-1 md:order-2 animate-fade-in-right flex justify-center md:justify-center">
+              <div className="relative order-1 md:order-2 animate-fade-in-right flex justify-center md:justify-end">
                 <div className="aspect-[4/5] w-2/3 xs:w-3/4 sm:w-2/3 md:w-4/5 max-w-[280px] xs:max-w-[320px] md:max-w-[360px] rounded-2xl overflow-hidden border border-primary/15 bg-background shadow-elegant hover:-translate-y-1 hover:shadow-elegant-hover transition-all">
                   <img
                     src="/placeholder.svg"
@@ -101,12 +101,12 @@ const Index = () => {
                     decoding="async"
                   />
                 </div>
-                <span className="absolute top-2 xs:top-3 left-2 xs:left-3 inline-flex items-center rounded-full bg-accent/20 text-accent px-2 xs:px-3 py-1 text-[10px] xs:text-xs shadow-sm animate-fade-in" style={{ animationDelay: '0.2s' }}>BPMN | Dados | AI</span>
+                <span className="absolute top-4 xs:top-5 right-4 xs:right-5 inline-flex items-center rounded-full bg-accent/20 text-accent px-2 xs:px-3 py-1 text-[10px] xs:text-xs shadow-sm animate-fade-in" style={{ animationDelay: '0.2s' }}>BPMN | Dados | AI</span>
                 <div className="absolute -bottom-3 xs:-bottom-4 left-1/2 -translate-x-1/2 bg-background/80 backdrop-blur rounded-full border border-primary/15 px-2 xs:px-3 py-1 text-[10px] xs:text-xs shadow-elegant">Arthur Lima, consultor TechClin</div>
               </div>
-              <div className="order-2 md:order-1 space-y-3 xs:space-y-4 animate-fade-in-left text-center md:text-left px-2 xs:px-0">
+              <div className="order-2 md:order-1 space-y-4 xs:space-y-5 animate-fade-in-left text-center md:text-left px-2 xs:px-0">
                 <h3 className="font-bree text-lg xs:text-xl md:text-2xl text-primary">Transformando operações com processos claros</h3>
-                <p className="text-base xs:text-lg md:text-xl text-foreground/90 leading-relaxed">Especialista em automação e processos, vive no Norte de Portugal estudando Inteligência Artificial no Instituto Politécnico de Bragança e cursa ADS na CESAR School, referência nacional em TI e inovação. Com experiência em projetos no Porto Digital, maior parque tecnológico do Brasil.Além do português, tem conhecimento em inglês e francês.</p>
+                <p className="text-lg xs:text-xl md:text-2xl text-foreground/90 leading-relaxed">Especialista em automação e processos, vive no Norte de Portugal estudando Inteligência Artificial no Instituto Politécnico de Bragança e cursa ADS na CESAR School, referência nacional em TI e inovação. Com experiência em projetos no Porto Digital, maior parque tecnológico do Brasil.Além do português, tem conhecimento em inglês e francês.</p>
 
                 <ul className="space-y-3 xs:space-y-4">
                   {[
@@ -115,8 +115,8 @@ const Index = () => {
                     "Experiência no Porto Digital (maior parque tecnológico do Brasil)",
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-3 xs:gap-4">
-                      <CheckCircle className="text-primary shrink-0 mt-0.5 w-5 h-5 xs:w-6 xs:h-6" />
-                      <span className="text-base xs:text-lg text-foreground/80">{item}</span>
+                      <CheckCircle className="text-primary shrink-0 mt-0.5 w-6 h-6 xs:w-7 xs:h-7" />
+                      <span className="text-lg xs:text-xl text-foreground/80">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -235,10 +235,12 @@ const Index = () => {
         {/* Soluções Personalizadas */}
         <section id="solucoes" className="bg-primary text-primary-foreground">
           <div className="section-container">
-            <SectionHeader
-              title="Soluções personalizadas para sua clínica"
-              subtitle="Cada empresa é única. Entregamos desde pequenas automações até aplicações sob medida — valores sempre sob consulta."
-            />
+            <header className="mb-6 xs:mb-8 md:mb-12 text-center max-w-4xl mx-auto px-2">
+              <h2 className="font-bree text-3xl xs:text-4xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight text-white mb-3 xs:mb-4 leading-tight">
+                Soluções personalizadas para sua clínica
+              </h2>
+              <p className="text-base xs:text-lg md:text-xl text-white/90 leading-relaxed max-w-2xl mx-auto">Cada empresa é única. Entregamos desde pequenas automações até aplicações sob medida — valores sempre sob consulta.</p>
+            </header>
             <div className="grid md:grid-cols-3 gap-6 xs:gap-8">
               {[
                 { title: "Integrações com WhatsApp", desc: "Automatize confirmações, agendamentos e lembretes integrando com o fluxo da sua recepção.", Icon: MessageSquare },
