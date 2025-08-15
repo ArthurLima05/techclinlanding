@@ -90,7 +90,7 @@ const Index = () => {
           <div className="section-container">
             <SectionHeader
               title="Sobre o Consultor"
-              subtitle="Especialista em mapeamento e otimizações de processos, conectando tecnologia, dados e gestão para tornar o atendimento mais eficiente e claro."
+              subtitle="vive no Norte de Portugal estudando Inteligência Artificial e engenharia de software no Instituto Politécnico de Bragança e cursa ADS na CESAR School, referência nacional em TI e inovação. Com experiência em projetos no Porto Digital, maior parque tecnológico do Brasil, integra gestão, dados e automação para gerar eficiência. Além do português, tem conhecimento em inglês e francês."
             />
             <div className="grid md:grid-cols-2 gap-6 xs:gap-8 items-center">
               <div className="relative order-1 md:order-2 animate-fade-in-right md:justify-self-center md:self-center">
