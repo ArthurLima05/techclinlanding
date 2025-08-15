@@ -4,12 +4,12 @@ import Footer from "@/components/Footer";
 import { CheckCircle, ArrowRight, Workflow, ClipboardList, MessageSquare } from "lucide-react";
 import VideoTestimonials from "@/components/VideoTestimonials";
 const SectionHeader = ({ title, subtitle }: { title: string; subtitle?: string }) => (
-  <header className="mb-4 xs:mb-6 md:mb-10 text-center max-w-3xl mx-auto px-2">
-    <h2 className="font-bree text-2xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tight text-primary mb-2 xs:mb-3 leading-tight">
+  <header className="mb-6 xs:mb-8 md:mb-12 text-center max-w-4xl mx-auto px-2">
+    <h2 className="font-bree text-3xl xs:text-4xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight text-primary mb-3 xs:mb-4 leading-tight">
       {title}
     </h2>
     {subtitle && (
-      <p className="text-sm xs:text-base md:text-lg text-foreground/80 leading-relaxed">{subtitle}</p>
+      <p className="text-base xs:text-lg md:text-xl text-foreground/80 leading-relaxed max-w-2xl mx-auto">{subtitle}</p>
     )}
   </header>
 );
@@ -54,11 +54,11 @@ const Index = () => {
           <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 py-8 xs:py-12 md:py-20">
             <div className="mx-auto max-w-4xl text-center">
               <p className="inline-block rounded-full bg-primary-foreground/10 text-primary-foreground px-2 xs:px-3 py-1 text-xs xs:text-sm mb-3 xs:mb-4 animate-fade-in" style={{ animationDelay: '0.05s' }}>Consultoria 1:1 exclusiva</p>
-              <h1 className="text-2xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bree font-bold tracking-normal md:tracking-wide leading-tight text-primary-foreground animate-fade-in" style={{ animationDelay: '0.1s' }}>
-                Transforme o atendimento da sua clínica com automação e dados inteligentes
+              <h1 className="text-3xl xs:text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-bree font-bold tracking-normal md:tracking-wide leading-tight text-primary-foreground animate-fade-in" style={{ animationDelay: '0.1s' }}>
+                Transforme sua clínica com automação inteligente
               </h1>
-              <p className="text-base xs:text-lg md:text-xl text-primary-foreground/90 mt-3 sm:mt-4 max-w-3xl leading-relaxed mx-auto animate-fade-in px-2" style={{ animationDelay: '0.2s' }}>
-                Mapeamento e otimização de processos para clínicas médicas, com fluxos visuais claros e recomendações baseadas em dados reais para decisões estratégicas.
+              <p className="text-lg xs:text-xl md:text-2xl text-primary-foreground/90 mt-4 sm:mt-6 max-w-3xl leading-relaxed mx-auto animate-fade-in px-2" style={{ animationDelay: '0.2s' }}>
+                Mapeamento de processos e otimização com dados reais para decisões mais inteligentes.
               </p>
               <div className="mt-5 xs:mt-6 md:mt-8 flex flex-col xs:flex-row items-center justify-center gap-2 xs:gap-3 animate-fade-in px-2" style={{ animationDelay: '0.3s' }}>
                 <a href="#contato" className="w-full xs:w-auto">
@@ -107,18 +107,17 @@ const Index = () => {
               </div>
               <div className="order-2 md:order-1 space-y-3 xs:space-y-4 animate-fade-in-left text-center md:text-left px-2 xs:px-0">
                 <h3 className="font-bree text-lg xs:text-xl md:text-2xl text-primary">Transformando operações com processos claros</h3>
-                <p className="text-sm xs:text-base md:text-lg text-foreground/90 leading-relaxed">Arthur, 20 anos, vive no Norte de Portugal estudando Inteligência Artificial e engenharia de software no Instituto Politécnico de Bragança e cursa ADS na CESAR School, referência nacional em TI e inovação. Com experiência em projetos no Porto Digital, maior parque tecnológico do Brasil, integra gestão, dados e automação para gerar eficiência. Além do português, tem conhecimento em inglês e francês.</p>
+                <p className="text-base xs:text-lg md:text-xl text-foreground/90 leading-relaxed">Especialista em automação e processos, com experiência no Porto Digital e formação em IA. Transforma operações complexas em fluxos simples e eficientes.</p>
 
-                <ul className="space-y-2 xs:space-y-3">
+                <ul className="space-y-3 xs:space-y-4">
                   {[
-                    "Experiência em mapeamento e otimização de processos para diferentes áreas de negócios",
-                    "Certificações em Inteligência Artificial (Machine Learning e Generative AI)",
-                    "Especialista em automações com ferramentas como n8n",
-                    "Experiência em gestão de equipes e otimização de fluxos em projetos do Porto Digital",
+                    "Mapeamento e otimização de processos para clínicas",
+                    "Certificado em Inteligência Artificial e automação",
+                    "Experiência no Porto Digital (maior parque tecnológico do Brasil)",
                   ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-2 xs:gap-3">
-                      <CheckCircle className="text-primary shrink-0 mt-0.5 w-4 h-4 xs:w-5 xs:h-5" />
-                      <span className="text-sm xs:text-base text-foreground/80">{item}</span>
+                    <li key={i} className="flex items-start gap-3 xs:gap-4">
+                      <CheckCircle className="text-primary shrink-0 mt-0.5 w-5 h-5 xs:w-6 xs:h-6" />
+                      <span className="text-base xs:text-lg text-foreground/80">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -132,20 +131,19 @@ const Index = () => {
         {/* Como funciona */}
         <section id="processo" className="bg-primary/5">
           <div className="section-container">
-            <SectionHeader title="Como funciona" />
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 xs:gap-6">
+            <SectionHeader title="Como funciona" subtitle="Processo simples e direto em 3 etapas" />
+            <div className="grid md:grid-cols-3 gap-6 xs:gap-8">
               {[
-                { title: "Reunião detalhada", desc: "Entendimento profundo do funcionamento da clínica e dos fluxos de atendimento dos pacientes.", Icon: Workflow },
-                { title: "Relatório e diagnóstico", desc: "Documento completo mostrando o modelo atual, problemas e recomendações práticas para melhorar processos.", Icon: ClipboardList },
-                { title: "Soluções personalizadas", desc: "Desenvolvimento de estratégias e ferramentas adaptadas às necessidades da clínica — valores sob consulta.", Icon: MessageSquare },
-                { title: "Suporte e acompanhamento", desc: "Apoio contínuo para garantir que as melhorias sejam implementadas e os resultados acompanhados.", Icon: CheckCircle },
+                { title: "Diagnóstico", desc: "Reunião para entender sua clínica e mapear processos", Icon: Workflow },
+                { title: "Relatório", desc: "Documento com problemas identificados e soluções", Icon: ClipboardList },
+                { title: "Implementação", desc: "Suporte para colocar as melhorias em prática", Icon: CheckCircle },
               ].map(({ title, desc, Icon }, i) => (
-                <article key={title} className={`relative group glass-card p-4 xs:p-6 text-left transition-all duration-500 hover:-translate-y-1 hover:shadow-elegant-hover hover:scale-[1.02] hover:rotate-[0.5deg] ${i % 2 === 0 ? 'animate-fade-in-left' : 'animate-fade-in-right'}`} style={{ animationDelay: `${0.06 * (i + 1)}s` }}>
-                  <div className="absolute -top-2 xs:-top-3 -left-2 xs:-left-3 w-6 h-6 xs:w-8 xs:h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs shadow-md animate-pulse-slow">{i + 1}</div>
-                  <Icon className="text-primary mb-2 xs:mb-3 w-5 h-5 xs:w-6 xs:h-6 transition-transform duration-300 group-hover:scale-110" />
-                  <h3 className="font-bree text-lg xs:text-xl mb-1 leading-tight">{title}</h3>
-                  <p className="text-foreground/80 text-xs xs:text-sm leading-relaxed">{desc}</p>
-                  <div className="mt-3 xs:mt-4 h-1 w-0 bg-accent rounded-full transition-all duration-500 group-hover:w-full" />
+                <article key={title} className={`relative group glass-card p-6 xs:p-8 text-center transition-all duration-500 hover:-translate-y-2 hover:shadow-elegant-hover hover:scale-105 ${i % 2 === 0 ? 'animate-fade-in-left' : 'animate-fade-in-right'}`} style={{ animationDelay: `${0.1 * (i + 1)}s` }}>
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 xs:w-10 xs:h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm xs:text-base shadow-lg animate-pulse-slow">{i + 1}</div>
+                  <Icon className="text-primary mb-4 xs:mb-6 w-8 h-8 xs:w-10 xs:h-10 mx-auto transition-transform duration-300 group-hover:scale-125" />
+                  <h3 className="font-bree text-xl xs:text-2xl mb-2 xs:mb-3 leading-tight">{title}</h3>
+                  <p className="text-foreground/80 text-base xs:text-lg leading-relaxed">{desc}</p>
+                  <div className="mt-4 xs:mt-6 h-1 w-0 bg-accent rounded-full mx-auto transition-all duration-500 group-hover:w-full" />
                 </article>
               ))}
             </div>
@@ -231,103 +229,37 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Por que nosso relatório funciona */}
-        <section id="bpmn" className="bg-primary/5">
+
+        {/* Resultados Visuais */}
+        <section id="resultados" className="bg-background">
           <div className="section-container">
             <SectionHeader
-              title="Por que nosso relatório funciona"
-              subtitle="Da captura do processo até recomendações acionáveis — tudo com base em evidências."
+              title="Resultados que você pode ver"
+              subtitle="Transformação real comprovada em números"
             />
-            <div className="grid md:grid-cols-3 gap-6">
-              <article className="glass-card p-6 hover-lift animate-fade-in-left" style={{ animationDelay: '0.05s' }}>
-                <Workflow className="text-primary mb-3" />
-                <h3 className="font-bree text-xl mb-2">Mapeamento completo (BPMN)</h3>
-                <p className="text-foreground/80">Documentação visual do estado atual, incluindo o fluxo do paciente e todas as áreas envolvidas.</p>
-              </article>
-              <article className="glass-card p-6 hover-lift animate-fade-in" style={{ animationDelay: '0.15s' }}>
-                <ClipboardList className="text-primary mb-3" />
-                <h3 className="font-bree text-xl mb-2">Diagnóstico com dados</h3>
-                <p className="text-foreground/80">Gargalos e problemas priorizados com métricas e evidências que embasam as decisões.</p>
-              </article>
-              <article className="glass-card p-6 hover-lift animate-fade-in-right" style={{ animationDelay: '0.25s' }}>
-                <CheckCircle className="text-primary mb-3" />
-                <h3 className="font-bree text-xl mb-2">Plano de ação</h3>
-                <p className="text-foreground/80">Recomendações claras (TO-BE), próximos passos e impacto esperado por iniciativa.</p>
-              </article>
-            </div>
-            <div className="mt-6 text-center">
-              <a href="#contato">
-                <Button className="bg-accent text-accent-foreground hover:bg-accent/90">
-                  Solicitar amostra do relatório
-                  <ArrowRight className="ml-2" />
-                </Button>
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* Soluções Personalizadas */}
-        <section id="solucoes" className="bg-background">
-          <div className="section-container">
-            <SectionHeader
-              title="Soluções personalizadas para sua clínica"
-              subtitle="Cada empresa é única. Entregamos desde pequenas automações até aplicações sob medida — valores sempre sob consulta."
-            />
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="feature-card bg-primary/5 border border-primary/15 hover:shadow-elegant-hover hover:-translate-y-1 transition-all animate-fade-in-left" style={{ animationDelay: '0.05s' }}>
-                <h4 className="font-bree text-lg mb-1">Integrações com WhatsApp</h4>
-                <p className="text-foreground/80">Automatize confirmações, agendamentos e lembretes integrando com o fluxo da sua recepção.</p>
-                <div className="mt-3 h-1 w-0 bg-accent rounded-full transition-all duration-500 group-hover:w-full" />
+            <div className="grid md:grid-cols-2 gap-8 xs:gap-12 items-center">
+              <div className="space-y-6 xs:space-y-8 animate-fade-in-left">
+                <div className="bg-primary/5 rounded-2xl p-6 xs:p-8 border border-primary/10">
+                  <div className="text-3xl xs:text-4xl font-bree text-primary mb-2">23%</div>
+                  <h3 className="font-bree text-lg xs:text-xl mb-1">Redução no tempo de atendimento</h3>
+                  <p className="text-sm xs:text-base text-foreground/80">Em média, em 60 dias de implementação</p>
+                </div>
+                <div className="bg-accent/5 rounded-2xl p-6 xs:p-8 border border-accent/10">
+                  <div className="text-3xl xs:text-4xl font-bree text-accent mb-2">40%</div>
+                  <h3 className="font-bree text-lg xs:text-xl mb-1">Menos retrabalho</h3>
+                  <p className="text-sm xs:text-base text-foreground/80">Processos padronizados eliminam erros</p>
+                </div>
               </div>
-              <div className="feature-card bg-primary/5 border border-primary/15 hover:shadow-elegant-hover hover:-translate-y-1 transition-all animate-fade-in" style={{ animationDelay: '0.15s' }}>
-                <h4 className="font-bree text-lg mb-1">Pequenas automações</h4>
-                <p className="text-foreground/80">Reduza tarefas repetitivas com automações que conectam sistemas já utilizados pela sua equipe.</p>
-                <div className="mt-3 h-1 w-0 bg-accent rounded-full transition-all duration-500 group-hover:w-full" />
+              <div className="relative animate-fade-in-right">
+                <div className="aspect-square rounded-2xl overflow-hidden border border-primary/20 bg-gradient-to-br from-primary/10 to-accent/10 shadow-elegant">
+                  <img
+                    src="/lovable-uploads/c3d5522b-6886-4b75-8ffc-d020016bb9c2.png"
+                    alt="Gráfico mostrando melhoria nos processos da clínica"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
               </div>
-              <div className="feature-card bg-primary/5 border border-primary/15 hover:shadow-elegant-hover hover:-translate-y-1 transition-all animate-fade-in-right" style={{ animationDelay: '0.25s' }}>
-                <h4 className="font-bree text-lg mb-1">Aplicações específicas</h4>
-                <p className="text-foreground/80">Desenvolvimento de soluções sob medida para necessidades muito específicas da sua operação.</p>
-                <div className="mt-3 h-1 w-0 bg-accent rounded-full transition-all duration-500 group-hover:w-full" />
-              </div>
-            </div>
-            <p className="text-center text-sm text-foreground/70 mt-4">Todos os valores são personalizados conforme o escopo.</p>
-            <div className="mt-6 text-center">
-              <a href="#contato">
-                <Button className="bg-accent text-accent-foreground hover:bg-accent/90">
-                  Solicitar proposta
-                  <ArrowRight className="ml-2" />
-                </Button>
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* Problemas que resolvemos */}
-        <section id="problemas" className="bg-primary/10">
-          <div className="section-container">
-            <SectionHeader title="Problemas que podemos ajudar a resolver" />
-            <ul className="max-w-4xl mx-auto grid md:grid-cols-2 gap-3">
-              {[
-                "Retrabalho e informações desencontradas entre setores",
-                "Falhas na confirmação e no comparecimento de pacientes",
-                "Tempo excessivo em tarefas manuais da recepção",
-                "Dificuldade de medir indicadores e resultados",
-                "Integrações inexistentes ou mal configuradas",
-                "Falta de padronização nos processos e comunicação",
-              ].map((item, i) => (
-                <li key={i} className={`flex items-start gap-3 bg-primary/5 rounded-xl p-4 border border-primary/10 hover:-translate-y-1 hover:shadow-elegant-hover transition-all ${(i % 2 === 0) ? 'animate-fade-in-left' : 'animate-fade-in-right'}`} style={{ animationDelay: `${0.04 * (i + 1)}s` }}>
-                  <CheckCircle className="text-primary shrink-0 mt-0.5" />
-                  <span className="text-foreground/80">{item}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-6 text-center">
-              <a href="#contato">
-                <Button variant="outline" className="border-accent text-accent hover:bg-accent/20">
-                  Quero resolver esses problemas
-                  <ArrowRight className="ml-2" />
-                </Button>
-              </a>
             </div>
           </div>
         </section>
