@@ -133,10 +133,10 @@ const Index = () => {
             <SectionHeader title="Como funciona" />
             <div className="grid md:grid-cols-4 gap-6">
               {[
-                { title: "Reunião detalhada (BPMN)", desc: "Entendimento profundo do funcionamento da clínica e dos fluxos do paciente.", Icon: Workflow },
-                { title: "Relatório e diagnóstico", desc: "Documento com o modelo atual, problemas e recomendações priorizadas.", Icon: ClipboardList },
-                { title: "Soluções personalizadas", desc: "Desenvolvimento do que for mais adequado — valores sob consulta.", Icon: MessageSquare },
-                { title: "Suporte e acompanhamento", desc: "Apoio contínuo para garantir a adoção e medir resultados.", Icon: CheckCircle },
+                { title: "Reunião detalhada", desc: Entendimento profundo do funcionamento da clínica e dos fluxos de atendimento dos pacientes.", Icon: Workflow },
+                { title: "Relatório e diagnóstico", desc: "Documento completo mostrando o modelo atual, problemas e recomendações práticas para melhorar processos.", Icon: ClipboardList },
+                { title: "Soluções personalizadas", desc: "Desenvolvimento de estratégias e ferramentas adaptadas às necessidades da clínica — valores sob consulta.", Icon: MessageSquare },
+                { title: "Suporte e acompanhamento", desc: "Apoio contínuo para garantir que as melhorias sejam implementadas e os resultados acompanhados.", Icon: CheckCircle },
               ].map(({ title, desc, Icon }, i) => (
                 <article key={title} className={`relative group glass-card p-6 text-left transition-all duration-500 hover:-translate-y-1 hover:shadow-elegant-hover hover:scale-[1.02] hover:rotate-[0.5deg] ${i % 2 === 0 ? 'animate-fade-in-left' : 'animate-fade-in-right'}`} style={{ animationDelay: `${0.06 * (i + 1)}s` }}>
                   <div className="absolute -top-3 -left-3 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs shadow-md animate-pulse-slow">{i + 1}</div>
