@@ -32,9 +32,8 @@ const Index = () => {
             </a>
             <div className="hidden sm:inline-flex">
               <Button
-                size="sm"
-                className="bg-accent text-accent-foreground hover:bg-accent/90 text-sm"
-                onClick={(e) => { e.preventDefault(); import("@/lib/lead-modal").then(m => m.openLeadModal()); }}
+                size="lg"
+                className="bg-accent text-accent-foreground hover:bg-accent/90 text-base"
               >
                 <span className="hidden md:inline">Agendar consultoria</span>
                 <span className="md:hidden">Agendar</span>
@@ -62,13 +61,13 @@ const Index = () => {
               </p>
               <div className="mt-5 xs:mt-6 md:mt-8 flex flex-col xs:flex-row items-center justify-center gap-2 xs:gap-3 animate-fade-in px-2" style={{ animationDelay: '0.3s' }}>
                 <a href="#contato" className="w-full xs:w-auto">
-                  <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 w-full xs:w-auto text-sm xs:text-base">
+                  <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 w-full xs:w-auto text-base xs:text-lg px-6 py-3">
                     Agendar consultoria
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </a>
                 <a href="#processo" className="w-full xs:w-auto">
-                  <Button variant="outline" size="lg" className="border-accent text-accent hover:bg-accent/20 w-full xs:w-auto text-sm xs:text-base">
+                  <Button variant="outline" size="lg" className="border-accent text-accent hover:bg-accent/20 w-full xs:w-auto text-base xs:text-lg px-6 py-3">
                     Como funciona
                   </Button>
                 </a>
@@ -93,8 +92,8 @@ const Index = () => {
               subtitle="Especialista em mapeamento e otimizações de processos, conectando tecnologia, dados e gestão para tornar o atendimento mais eficiente e claro."
             />
             <div className="grid md:grid-cols-2 gap-6 xs:gap-8 items-center">
-              <div className="relative order-1 md:order-2 animate-fade-in-right md:justify-self-center md:self-center">
-                <div className="aspect-[4/5] w-2/3 xs:w-3/4 sm:w-2/3 md:w-4/5 max-w-[280px] xs:max-w-[320px] md:max-w-[360px] mx-auto rounded-2xl overflow-hidden border border-primary/15 bg-background shadow-elegant hover:-translate-y-1 hover:shadow-elegant-hover transition-all">
+              <div className="relative order-1 md:order-2 animate-fade-in-right flex justify-center md:justify-center">
+                <div className="aspect-[4/5] w-2/3 xs:w-3/4 sm:w-2/3 md:w-4/5 max-w-[280px] xs:max-w-[320px] md:max-w-[360px] rounded-2xl overflow-hidden border border-primary/15 bg-background shadow-elegant hover:-translate-y-1 hover:shadow-elegant-hover transition-all">
                   <img
                     src="/placeholder.svg"
                     alt="Foto do consultor da TechClin"
@@ -149,7 +148,7 @@ const Index = () => {
             </div>
             <div className="mt-6 text-center">
               <a href="#contato">
-                <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
+                <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-base px-6 py-3">
                   Agendar reunião detalhada
                   <ArrowRight className="ml-2" />
                 </Button>
@@ -220,19 +219,21 @@ const Index = () => {
               </div>
             </div>
             <div className="mt-6 text-center">
-              <a href="#contato">
-                <Button variant="outline" className="border-accent text-accent hover:bg-accent/20">
-                  Quero receber o relatório
-                  <ArrowRight className="ml-2" />
-                </Button>
-              </a>
+              <Button 
+                variant="outline" 
+                className="border-accent text-accent hover:bg-accent/20 text-base px-6 py-3"
+                onClick={(e) => { e.preventDefault(); import("@/lib/lead-modal").then(m => m.openLeadModal()); }}
+              >
+                Receber amostra de relatório
+                <ArrowRight className="ml-2" />
+              </Button>
             </div>
           </div>
         </section>
 
 
         {/* Soluções Personalizadas */}
-        <section id="solucoes" className="bg-background">
+        <section id="solucoes" className="bg-primary text-primary-foreground">
           <div className="section-container">
             <SectionHeader
               title="Soluções personalizadas para sua clínica"
@@ -244,21 +245,19 @@ const Index = () => {
                 { title: "Pequenas automações", desc: "Reduza tarefas repetitivas com automações que conectam sistemas já utilizados pela sua equipe.", Icon: Workflow },
                 { title: "Aplicações específicas", desc: "Desenvolvimento de soluções sob medida para necessidades muito específicas da sua operação.", Icon: ClipboardList },
               ].map(({ title, desc, Icon }, i) => (
-                <article key={title} className={`bg-green-900 border border-green-800 rounded-2xl p-6 xs:p-8 text-center transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-green-900/20 ${i % 2 === 0 ? 'animate-fade-in-left' : 'animate-fade-in-right'}`} style={{ animationDelay: `${0.1 * (i + 1)}s` }}>
-                  <Icon className="text-green-300 mb-4 xs:mb-6 w-8 h-8 xs:w-10 xs:h-10 mx-auto" />
-                  <h3 className="font-bree text-xl xs:text-2xl mb-2 xs:mb-3 leading-tight text-white">{title}</h3>
-                  <p className="text-green-100 text-base xs:text-lg leading-relaxed">{desc}</p>
+                <article key={title} className={`bg-primary-foreground/10 backdrop-blur border border-primary-foreground/20 rounded-2xl p-6 xs:p-8 text-center transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:bg-primary-foreground/15 ${i % 2 === 0 ? 'animate-fade-in-left' : 'animate-fade-in-right'}`} style={{ animationDelay: `${0.1 * (i + 1)}s` }}>
+                  <Icon className="text-accent mb-4 xs:mb-6 w-8 h-8 xs:w-10 xs:h-10 mx-auto" />
+                  <h3 className="font-bree text-xl xs:text-2xl mb-2 xs:mb-3 leading-tight text-primary-foreground">{title}</h3>
+                  <p className="text-primary-foreground/90 text-base xs:text-lg leading-relaxed">{desc}</p>
                 </article>
               ))}
             </div>
             <div className="mt-6 xs:mt-8 text-center">
-              <p className="text-sm xs:text-base text-foreground/70 mb-4">Todos os valores são personalizados conforme o escopo.</p>
-              <a href="#contato">
-                <Button variant="outline" className="border-accent text-accent hover:bg-accent/20">
-                  Solicitar proposta
-                  <ArrowRight className="ml-2" />
-                </Button>
-              </a>
+              <p className="text-sm xs:text-base text-primary-foreground/70 mb-4">Todos os valores são personalizados conforme o escopo.</p>
+              <Button variant="outline" className="border-accent text-accent hover:bg-accent/20 text-base px-6 py-3">
+                Solicitar proposta
+                <ArrowRight className="ml-2" />
+              </Button>
             </div>
           </div>
         </section>
@@ -309,9 +308,7 @@ const Index = () => {
             <h2 className="font-bree text-2xl xs:text-3xl md:text-4xl mb-2 leading-tight">Pronto para dar o próximo passo?</h2>
             <p className="text-sm xs:text-base text-primary-foreground/90 mb-4 xs:mb-6 px-2">Agende sua consultoria e receba um diagnóstico claro com recomendações práticas.</p>
             <div>
-              <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 w-full xs:w-auto text-sm xs:text-base"
-                onClick={(e) => { e.preventDefault(); import("@/lib/lead-modal").then(m => m.openLeadModal()); }}
-              >
+              <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 w-full xs:w-auto text-base xs:text-lg px-6 py-3">
                 Agendar consultoria por e-mail
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>

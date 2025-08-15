@@ -54,33 +54,33 @@ const LeadCaptureDialog: React.FC = () => {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-lg w-full max-w-[90vw]">
         <DialogHeader>
-          <DialogTitle>Agendar consultoria</DialogTitle>
-          <DialogDescription>
-            Preencha seus dados para que possamos entrar em contato e confirmar sua consultoria.
+          <DialogTitle className="text-xl">Receber amostra de relatório</DialogTitle>
+          <DialogDescription className="text-base">
+            Preencha seus dados para receber uma amostra do nosso relatório de mapeamento de processos.
           </DialogDescription>
         </DialogHeader>
-        <form onSubmit={onSubmit} className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="nome">Nome completo</Label>
-            <Input id="nome" name="nome" value={form.nome} onChange={onChange} placeholder="Ex: Ana Silva" required />
+        <form onSubmit={onSubmit} className="space-y-6">
+          <div className="space-y-3">
+            <Label htmlFor="nome" className="text-base">Nome completo</Label>
+            <Input id="nome" name="nome" value={form.nome} onChange={onChange} placeholder="Ex: Ana Silva" required className="h-12 text-base" />
           </div>
-          <div className="space-y-2">
-            <Label htmlFor="email">E-mail</Label>
-            <Input id="email" name="email" type="email" value={form.email} onChange={onChange} placeholder="seu@email.com" required />
+          <div className="space-y-3">
+            <Label htmlFor="email" className="text-base">E-mail</Label>
+            <Input id="email" name="email" type="email" value={form.email} onChange={onChange} placeholder="seu@email.com" required className="h-12 text-base" />
           </div>
-          <div className="space-y-2">
-            <Label htmlFor="telefone">Telefone</Label>
-            <Input id="telefone" name="telefone" type="tel" value={form.telefone} onChange={onChange} placeholder="(11) 91234-5678" required />
+          <div className="space-y-3">
+            <Label htmlFor="telefone" className="text-base">Telefone</Label>
+            <Input id="telefone" name="telefone" type="tel" value={form.telefone} onChange={onChange} placeholder="(11) 91234-5678" required className="h-12 text-base" />
           </div>
-          <div className="flex items-center justify-end gap-2 pt-1">
-            <Button type="button" variant="outline" onClick={() => setOpen(false)}>Cancelar</Button>
-            <Button type="submit" disabled={loading} className="bg-accent text-accent-foreground hover:bg-accent/90">
+          <div className="flex items-center justify-end gap-3 pt-2">
+            <Button type="button" variant="outline" onClick={() => setOpen(false)} className="px-6 py-3 text-base">Cancelar</Button>
+            <Button type="submit" disabled={loading} className="bg-accent text-accent-foreground hover:bg-accent/90 px-6 py-3 text-base">
               {loading ? "Enviando..." : "Enviar"}
             </Button>
           </div>
-          <p className="text-xs text-foreground/70">Seus dados serão usados apenas para contato sobre a consultoria.</p>
+          <p className="text-sm text-foreground/70">Seus dados serão usados apenas para envio da amostra do relatório.</p>
         </form>
       </DialogContent>
     </Dialog>
