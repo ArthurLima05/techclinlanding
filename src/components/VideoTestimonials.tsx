@@ -41,7 +41,6 @@ export default function VideoTestimonials() {
           <CarouselNext aria-label="Próximo vídeo" />
         </div>
       </Carousel>
-      <p className="text-center text-sm text-foreground/70 mt-2">Carrossel estático — substitua pelas URLs dos seus vídeos posteriormente.</p>
     </div>
   );
 }
