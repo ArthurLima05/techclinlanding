@@ -254,7 +254,8 @@ const Index = () => {
             </div>
             <div className="mt-6 xs:mt-8 text-center">
               <p className="text-sm xs:text-base text-primary-foreground/70 mb-4">Todos os valores são personalizados conforme o escopo.</p>
-              <Button variant="outline" className="bg-accent text-accent-foreground hover:bg-accent/90 text-base px-6 py-3">
+              <Button variant="outline" className="bg-accent text-accent-foreground hover:bg-accent/90 text-base px-6 py-3
+">
                 Solicitar proposta
                 <ArrowRight className="ml-2" />
               </Button>
