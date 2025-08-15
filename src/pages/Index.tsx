@@ -79,7 +79,7 @@ const Index = () => {
         {/* Depoimento forte (logo após o Hero) */}
         <section id="depoimentos" className="bg-background">
           <div className="section-container">
-            <SectionHeader title="Mais eficiência e menos retrabalho na sua clínica – veja como" subtitle="Veja na prática como transformamos o atendimento da clínica e escute a experiência de quem já passou por aqui." />
+            <SectionHeader title="Mais eficiência e menos retrabalho na sua clínica" subtitle="Veja na prática como transformamos o atendimento da clínica e escute a experiência de quem já passou por aqui." />
             <VideoTestimonials />
           </div>
         </section>
