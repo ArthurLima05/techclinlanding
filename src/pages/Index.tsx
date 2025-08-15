@@ -244,10 +244,10 @@ const Index = () => {
                 { title: "Pequenas automações", desc: "Reduza tarefas repetitivas com automações que conectam sistemas já utilizados pela sua equipe.", Icon: Workflow },
                 { title: "Aplicações específicas", desc: "Desenvolvimento de soluções sob medida para necessidades muito específicas da sua operação.", Icon: ClipboardList },
               ].map(({ title, desc, Icon }, i) => (
-                <article key={title} className={`glass-card p-6 xs:p-8 text-center transition-all duration-500 hover:-translate-y-2 hover:shadow-elegant-hover ${i % 2 === 0 ? 'animate-fade-in-left' : 'animate-fade-in-right'}`} style={{ animationDelay: `${0.1 * (i + 1)}s` }}>
-                  <Icon className="text-primary mb-4 xs:mb-6 w-8 h-8 xs:w-10 xs:h-10 mx-auto" />
-                  <h3 className="font-bree text-xl xs:text-2xl mb-2 xs:mb-3 leading-tight">{title}</h3>
-                  <p className="text-foreground/80 text-base xs:text-lg leading-relaxed">{desc}</p>
+                <article key={title} className={`bg-green-900 border border-green-800 rounded-2xl p-6 xs:p-8 text-center transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-green-900/20 ${i % 2 === 0 ? 'animate-fade-in-left' : 'animate-fade-in-right'}`} style={{ animationDelay: `${0.1 * (i + 1)}s` }}>
+                  <Icon className="text-green-300 mb-4 xs:mb-6 w-8 h-8 xs:w-10 xs:h-10 mx-auto" />
+                  <h3 className="font-bree text-xl xs:text-2xl mb-2 xs:mb-3 leading-tight text-white">{title}</h3>
+                  <p className="text-green-100 text-base xs:text-lg leading-relaxed">{desc}</p>
                 </article>
               ))}
             </div>
