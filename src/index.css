@@ -143,15 +143,15 @@
   }
   
   .section-container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12;
+    @apply max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 py-6 sm:py-8 md:py-12;
   }
 
   .section-title {
-    @apply text-3xl md:text-4xl lg:text-5xl font-bree font-bold tracking-normal md:tracking-wide;
+    @apply text-2xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bree font-bold tracking-normal md:tracking-wide leading-tight;
   }
 
   .section-subtitle {
-    @apply text-lg md:text-xl text-gray-600 mt-4 max-w-3xl;
+    @apply text-base xs:text-lg md:text-xl text-gray-600 mt-3 sm:mt-4 max-w-3xl leading-relaxed;
   }
 
   .glass-card {
