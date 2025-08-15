@@ -53,10 +53,10 @@ const Index = () => {
             <div className="mx-auto max-w-4xl text-center">
               <p className="inline-block rounded-full bg-primary-foreground/10 text-primary-foreground px-3 py-1 text-sm mb-4 animate-fade-in" style={{ animationDelay: '0.05s' }}>Consultoria 1:1 exclusiva</p>
               <h1 className="section-title text-primary-foreground animate-fade-in" style={{ animationDelay: '0.1s' }}>
-                Mapeamento e otimização de processos para clínicas médicas
+                Transforme o atendimento da sua clínica com automação e dados inteligentes
               </h1>
               <p className="section-subtitle text-primary-foreground/90 mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
-                Relatório personalizado com BPMN e recomendações baseadas em dados reais para decisões estratégicas.
+                Mapeamento e otimização de processos para clínicas médicas, com fluxos visuais claros e recomendações baseadas em dados reais para decisões estratégicas.
               </p>
               <div className="mt-6 md:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 animate-fade-in" style={{ animationDelay: '0.3s' }}>
                 <a href="#contato">
@@ -88,7 +88,7 @@ const Index = () => {
           <div className="section-container">
             <SectionHeader
               title="Sobre o Consultor"
-              subtitle="Especialista em mapeamento de processos (BPMN) e diagnóstico operacional para clínicas."
+              subtitle="Especialista em mapeamento e otimizações de processos, conectando tecnologia, dados e gestão para tornar o atendimento mais eficiente e claro."
             />
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div className="relative order-1 md:order-2 animate-fade-in-right md:justify-self-center md:self-center">
@@ -112,6 +112,7 @@ const Index = () => {
                     "Experiência em mapeamento e otimização de processos para diferentes áreas de negócios",
                     "Certificações em Inteligência Artificial (Machine Learning e Generative AI)",
                     "Especialista em automações com ferramentas como n8n",
+                    "Experiência em gestão de equipes e otimização de fluxos em projetos do Porto Digital",
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-3">
                       <CheckCircle className="text-primary shrink-0 mt-0.5" />
