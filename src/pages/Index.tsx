@@ -177,11 +177,11 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Relatório TechClin: Mapeamento e Diagnóstico BPMN */}
+        {/* Relatório TechClin: Mapeamento e Diagnóstico de Processos */}
         <section id="sobre" className="bg-primary/5">
           <div className="section-container">
             <SectionHeader
-              title="Relatório TechClin: Mapeamento e Diagnóstico BPMN"
+              title="Relatório TechClin: Mapeamento e Diagnóstico de Processos"
               subtitle="Entenda com clareza como sua clínica funciona hoje e tenha um plano de ação baseado em dados reais."
             />
             <div className="grid md:grid-cols-2 gap-8 items-start">
@@ -190,11 +190,12 @@ const Index = () => {
                 <h3 className="font-bree text-2xl">O que você recebe</h3>
                 <ul className="space-y-3 mx-auto md:mx-0 max-w-md md:max-w-none text-center md:text-left">
                   {[
-                    "Mapeamento completo do fluxo do paciente em BPMN (AS-IS)",
-                    "Problemas e gargalos identificados com evidências",
+                    "Mapeamento completo do fluxo do paciente (AS-IS)",
+                    "Identificação de problemas e gargalos com dados identificados com evidências",
                     "Recomendações de automação e melhorias priorizadas (TO-BE)",
                     "Métricas e dados reais que comprovam o impacto esperado",
-                    "Versão legível para quem não conhece BPMN (resumo executivo)"
+                    "Versão descritiva para quem não conhece os fluxos (resumo executivo)",
+                    "Análise de impacto financeiro e operacional",
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-3 mx-auto md:mx-0">
                       <CheckCircle className="text-primary shrink-0 mt-0.5" />
