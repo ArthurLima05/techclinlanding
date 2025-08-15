@@ -55,7 +55,7 @@ const Index = () => {
             <div className="mx-auto max-w-4xl text-center">
               <p className="inline-block rounded-full bg-primary-foreground/10 text-primary-foreground px-2 xs:px-3 py-1 text-xs xs:text-sm mb-3 xs:mb-4 animate-fade-in" style={{ animationDelay: '0.05s' }}>Consultoria 1:1 exclusiva</p>
               <h1 className="text-3xl xs:text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-bree font-bold tracking-normal md:tracking-wide leading-tight text-primary-foreground animate-fade-in" style={{ animationDelay: '0.1s' }}>
-                Transforme sua clínica com automação inteligente
+                Transforme sua clínica com automação e dados inteligente
               </h1>
               <p className="text-lg xs:text-xl md:text-2xl text-primary-foreground/90 mt-4 sm:mt-6 max-w-3xl leading-relaxed mx-auto animate-fade-in px-2" style={{ animationDelay: '0.2s' }}>
                 Mapeamento de processos e otimização com dados reais para decisões mais inteligentes.
