@@ -133,7 +133,7 @@ const Index = () => {
             <SectionHeader title="Como funciona" />
             <div className="grid md:grid-cols-4 gap-6">
               {[
-                { title: "Reunião detalhada", desc: Entendimento profundo do funcionamento da clínica e dos fluxos de atendimento dos pacientes.", Icon: Workflow },
+                { title: "Reunião detalhada", desc: "Entendimento profundo do funcionamento da clínica e dos fluxos de atendimento dos pacientes.", Icon: Workflow },
                 { title: "Relatório e diagnóstico", desc: "Documento completo mostrando o modelo atual, problemas e recomendações práticas para melhorar processos.", Icon: ClipboardList },
                 { title: "Soluções personalizadas", desc: "Desenvolvimento de estratégias e ferramentas adaptadas às necessidades da clínica — valores sob consulta.", Icon: MessageSquare },
                 { title: "Suporte e acompanhamento", desc: "Apoio contínuo para garantir que as melhorias sejam implementadas e os resultados acompanhados.", Icon: CheckCircle },
