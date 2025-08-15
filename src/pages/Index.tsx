@@ -58,7 +58,7 @@ const Index = () => {
                 Transforme sua clínica com automação e dados inteligente
               </h1>
               <p className="text-lg xs:text-xl md:text-2xl text-primary-foreground/90 mt-4 sm:mt-6 max-w-3xl leading-relaxed mx-auto animate-fade-in px-2" style={{ animationDelay: '0.2s' }}>
-                Mapeamento de processos e otimização com dados reais para decisões mais inteligentes.
+                Mapeamento e otimização de processos para clínicas médicas, com fluxos visuais claros e recomendações baseadas em dados reais para decisões estratégicas.
               </p>
               <div className="mt-5 xs:mt-6 md:mt-8 flex flex-col xs:flex-row items-center justify-center gap-2 xs:gap-3 animate-fade-in px-2" style={{ animationDelay: '0.3s' }}>
                 <a href="#contato" className="w-full xs:w-auto">
