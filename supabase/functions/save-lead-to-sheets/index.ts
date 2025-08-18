@@ -5,6 +5,72 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
+// Function to create JWT for Google Service Account
+async function createJWT(email: string, privateKey: string) {
+  const header = {
+    alg: "RS256",
+    typ: "JWT"
+  };
+
+  const now = Math.floor(Date.now() / 1000);
+  const payload = {
+    iss: email,
+    scope: "https://www.googleapis.com/auth/spreadsheets",
+    aud: "https://oauth2.googleapis.com/token",
+    exp: now + 3600,
+    iat: now
+  };
+
+  const encodedHeader = btoa(JSON.stringify(header)).replace(/=/g, "").replace(/\+/g, "-").replace(/\//g, "_");
+  const encodedPayload = btoa(JSON.stringify(payload)).replace(/=/g, "").replace(/\+/g, "-").replace(/\//g, "_");
+
+  const data = `${encodedHeader}.${encodedPayload}`;
+  
+  // Import the private key
+  const keyData = privateKey.replace(/\\n/g, '\n');
+  const cryptoKey = await crypto.subtle.importKey(
+    "pkcs8",
+    new TextEncoder().encode(keyData),
+    {
+      name: "RSASSA-PKCS1-v1_5",
+      hash: "SHA-256",
+    },
+    false,
+    ["sign"]
+  );
+
+  const signature = await crypto.subtle.sign(
+    "RSASSA-PKCS1-v1_5",
+    cryptoKey,
+    new TextEncoder().encode(data)
+  );
+
+  const encodedSignature = btoa(String.fromCharCode(...new Uint8Array(signature)))
+    .replace(/=/g, "").replace(/\+/g, "-").replace(/\//g, "_");
+
+  return `${data}.${encodedSignature}`;
+}
+
+// Function to get access token
+async function getAccessToken(email: string, privateKey: string) {
+  const jwt = await createJWT(email, privateKey);
+  
+  const response = await fetch("https://oauth2.googleapis.com/token", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: `grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer&assertion=${jwt}`,
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to get access token: ${await response.text()}`);
+  }
+
+  const data = await response.json();
+  return data.access_token;
+}
+
 serve(async (req) => {
   // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
@@ -21,16 +87,20 @@ serve(async (req) => {
       );
     }
 
-    const apiKey = Deno.env.get('GOOGLE_SHEETS_API_KEY');
+    const serviceAccountEmail = Deno.env.get('GOOGLE_SERVICE_ACCOUNT_EMAIL');
+    const serviceAccountKey = Deno.env.get('GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY');
     const sheetsId = Deno.env.get('GOOGLE_SHEETS_ID');
     
-    if (!apiKey || !sheetsId) {
-      console.error('Missing Google Sheets credentials');
+    if (!serviceAccountEmail || !serviceAccountKey || !sheetsId) {
+      console.error('Missing Google Service Account credentials');
       return new Response(
         JSON.stringify({ error: 'Configuração do Google Sheets não encontrada' }), 
         { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
+
+    // Get access token using Service Account
+    const accessToken = await getAccessToken(serviceAccountEmail, serviceAccountKey);
 
     // Data to append to the sheet
     const timestamp = new Date().toLocaleString('pt-BR');
@@ -41,7 +111,7 @@ serve(async (req) => {
     const response = await fetch(url, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${apiKey}`,
+        'Authorization': `Bearer ${accessToken}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
