@@ -116,8 +116,8 @@ serve(async (req) => {
     const timestamp = new Date().toLocaleString('pt-BR');
     const values = [[timestamp, nome, email, telefone]];
 
-const sheetName = "leads_techclin!A:D"; // nome da aba com range específico
-const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetsId}/values/${sheetName}:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`;
+const sheetName = "leads_techclin"; // nome da aba
+const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetsId}/values/${sheetName}!A:D:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`;
 
 
 
