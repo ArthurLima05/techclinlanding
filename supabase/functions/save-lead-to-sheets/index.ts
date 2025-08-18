@@ -28,9 +28,18 @@ async function createJWT(email: string, privateKey: string) {
   
   // Import the private key
   const keyData = privateKey.replace(/\\n/g, '\n');
+  
+  // Remove PEM headers and decode base64
+  const pemContent = keyData
+    .replace(/-----BEGIN PRIVATE KEY-----/g, '')
+    .replace(/-----END PRIVATE KEY-----/g, '')
+    .replace(/\s/g, '');
+  
+  const binaryDer = Uint8Array.from(atob(pemContent), c => c.charCodeAt(0));
+  
   const cryptoKey = await crypto.subtle.importKey(
     "pkcs8",
-    new TextEncoder().encode(keyData),
+    binaryDer,
     {
       name: "RSASSA-PKCS1-v1_5",
       hash: "SHA-256",
