@@ -117,7 +117,8 @@ serve(async (req) => {
     const values = [[timestamp, nome, email, telefone]];
 
     const sheetName = "leads_techclin";
-    const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetsId}/values/${encodeURIComponent(sheetName)}!A1:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`;
+    const range = `${sheetName}!A:D`;
+    const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetsId}/values/${encodeURIComponent(range)}:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`;
 
 
 
