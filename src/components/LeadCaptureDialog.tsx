@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const LeadCaptureDialog: React.FC = () => {
   const { toast } = useToast();
@@ -40,8 +41,19 @@ const LeadCaptureDialog: React.FC = () => {
     }
     try {
       setLoading(true);
-      // Aqui você pode integrar com Supabase/email/zapier conforme necessidade
-      console.log("Lead capturado:", form);
+      
+      // Salvar lead no Google Sheets via Supabase Edge Function
+      const { data, error } = await supabase.functions.invoke('save-lead-to-sheets', {
+        body: { nome: form.nome, email: form.email, telefone: form.telefone }
+      });
+
+      if (error) {
+        console.error('Erro ao salvar lead:', error);
+        toast({ title: "Erro ao salvar", description: "Tente novamente em instantes.", variant: "destructive" });
+        return;
+      }
+
+      console.log("Lead salvo:", data);
       toast({ title: "Tudo certo!", description: "Recebemos seus dados e entraremos em contato." });
       setOpen(false);
       setForm({ nome: "", email: "", telefone: "" });
@@ -49,6 +61,7 @@ const LeadCaptureDialog: React.FC = () => {
       // Redirect to Notion page
       window.open("https://www.notion.so/Modelagem-e-Melhoria-de-Processos-Vida-Plena-23d89179d96f8018beb5c50fc4e3b8c0", "_blank");
     } catch (err) {
+      console.error('Erro na submissão:', err);
       toast({ title: "Erro ao enviar", description: "Tente novamente em instantes.", variant: "destructive" });
     } finally {
       setLoading(false);
