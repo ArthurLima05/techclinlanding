@@ -115,7 +115,9 @@ serve(async (req) => {
     const timestamp = new Date().toLocaleString('pt-BR');
     const values = [[timestamp, nome, email, telefone]];
 
-    const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetsId}/values/Sheet1!A:D:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`;
+    const sheetName = "Leads - TechClin";
+    const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetsId}/values/${encodeURIComponent(sheetName)}!A:D:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`;
+
     
     const response = await fetch(url, {
       method: 'POST',
