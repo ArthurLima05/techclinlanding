@@ -59,31 +59,7 @@ const Index = () => {
               <p className="text-lg xs:text-xl md:text-2xl text-primary-foreground/90 mt-4 sm:mt-6 max-w-3xl leading-relaxed mx-auto animate-fade-in px-2" style={{ animationDelay: '0.2s' }}>
                 Mapeamento e otimização de processos para clínicas médicas, com fluxos visuais claros e recomendações baseadas em dados reais para decisões estratégicas.
               </p>
-              
-              {/* Video Section */}
-              <div className="mt-6 xs:mt-8 md:mt-10 animate-fade-in" style={{ animationDelay: '0.25s' }}>
-                <div className="w-full max-w-3xl mx-auto">
-                  <div className="relative rounded-xl overflow-hidden border border-primary-foreground/20 bg-primary-foreground/10 shadow-elegant">
-                    <div className="aspect-video">
-                      <img
-                        src="/hero-image.jpg"
-                        alt="Vídeo demonstrativo - Transformação de clínicas com automação"
-                        className="w-full h-full object-cover"
-                        loading="eager"
-                        decoding="async"
-                      />
-                      <div className="absolute inset-0 bg-background/10" aria-hidden />
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-16 h-16 xs:w-20 xs:h-20 rounded-full bg-accent/90 flex items-center justify-center shadow-lg hover:bg-accent transition-colors cursor-pointer">
-                          <div className="w-0 h-0 border-l-[12px] xs:border-l-[16px] border-l-accent-foreground border-y-[8px] xs:border-y-[10px] border-y-transparent ml-1"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-6 xs:mt-8 md:mt-10 flex flex-col xs:flex-row items-center justify-center gap-2 xs:gap-3 animate-fade-in px-2" style={{ animationDelay: '0.3s' }}>
+              <div className="mt-5 xs:mt-6 md:mt-8 flex flex-col xs:flex-row items-center justify-center gap-2 xs:gap-3 animate-fade-in px-2" style={{ animationDelay: '0.3s' }}>
                 <a href="#contato" className="w-full xs:w-auto">
                   <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 w-full xs:w-auto text-base xs:text-lg px-6 py-3">
                     Agendar consultoria
@@ -100,6 +76,13 @@ const Index = () => {
           </div>
         </section>
 
+        {/* Depoimento forte (logo após o Hero) */}
+        <section id="depoimentos" className="bg-background">
+          <div className="section-container">
+           
+            <VideoTestimonials />
+          </div>
+        </section>
 
         {/* Sobre o Consultor */}
         <section id="consultor" className="bg-primary/5">
@@ -178,7 +161,18 @@ const Index = () => {
         <section id="prova-social" className="bg-primary/10">
           <div className="section-container">
             <SectionHeader title="Prova social" subtitle="Resultados e experiências de quem já passou pelo processo" />
-            <VideoTestimonials />
+            <div className="grid md:grid-cols-3 gap-6">
+              {[
+                { quote: 'Reduzimos o tempo de atendimento em 23% em 60 dias.', author: 'Clínica Vida Plena' },
+                { quote: 'O fluxo padronizado eliminou retrabalhos e erros de agenda.', author: 'Instituto Bem Cuidar' },
+                { quote: 'Relatório claro, com dados — decisão ficou muito mais fácil.', author: 'Grupo Saúde+ ' },
+              ].map((t, i) => (
+                <blockquote key={i} className={`glass-card p-6 italic text-foreground/90 border border-primary/15 ${i % 2 === 0 ? 'animate-fade-in-left' : 'animate-fade-in-right'}`} style={{ animationDelay: `${0.06 * (i + 1)}s` }}>
+                  “{t.quote}”
+                  <footer className="not-italic mt-3 text-sm text-foreground/70">— {t.author}</footer>
+                </blockquote>
+              ))}
+            </div>
           </div>
         </section>
 
