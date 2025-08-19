@@ -200,7 +200,7 @@ const Index = () => {
                     "Recomendações de automação e melhorias priorizadas (TO-BE)",
                     "Métricas e dados reais que comprovam o impacto esperado",
                     "Versão descritiva para quem não conhece os fluxos (resumo executivo)",
-                    "Análise de impacto financeiro e operacional",
+                    "Análise de impacto financeiro e operacional para tomadas de decisão",
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-3 mx-auto md:mx-0">
                       <CheckCircle className="text-primary shrink-0 mt-0.5" />
