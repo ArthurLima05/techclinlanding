@@ -1,4 +1,0 @@
-project_id = "ccrozlazfmlkeofmvxxa"
-
-[functions.save-lead-to-sheets]
-verify_jwt = false
