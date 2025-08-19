@@ -95,13 +95,13 @@ const Index = () => {
               <div className="relative order-1 md:order-2 animate-fade-in-right flex justify-center md:justify-end">
                 <div className="aspect-[4/5] w-2/3 xs:w-3/4 sm:w-2/3 md:w-4/5 max-w-[280px] xs:max-w-[320px] md:max-w-[360px] rounded-2xl overflow-hidden border border-primary/15 bg-background shadow-elegant hover:-translate-y-1 hover:shadow-elegant-hover transition-all">
                   <img
-                    src="/placeholder.svg"
+                    src="/foto_perfil.jpg"
                     alt="Foto do consultor da TechClin"
                     className="w-full h-full object-cover"
                     decoding="async"
                   />
                 </div>
-                <span className="absolute top-4 xs:top-5 right-4 xs:right-5 inline-flex items-center rounded-full bg-accent/20 text-accent px-2 xs:px-3 py-1 text-[10px] xs:text-xs shadow-sm animate-fade-in" style={{ animationDelay: '0.2s' }}>BPMN | Dados | AI</span>
+                <span className="absolute top-4 xs:top-4 right-4 xs:right-1 inline-flex items-center rounded-full bg-accent/20 text-accent px-2 xs:px-3 py-1 text-[10px] xs:text-xs shadow-sm animate-fade-in" style={{ animationDelay: '0.2s' }}>BPMN | Dados | AI</span>
                 <div className="absolute -bottom-3 xs:-bottom-4 left-1/2 -translate-x-1/2 bg-background/80 backdrop-blur rounded-full border border-primary/15 px-2 xs:px-3 py-1 text-[10px] xs:text-xs shadow-elegant">Arthur Lima, consultor TechClin</div>
               </div>
               <div className="order-2 md:order-1 space-y-4 xs:space-y-5 animate-fade-in-left text-center md:text-left px-2 xs:px-0">
