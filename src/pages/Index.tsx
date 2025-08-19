@@ -79,7 +79,7 @@ const Index = () => {
         {/* Depoimento forte (logo após o Hero) */}
         <section id="depoimentos" className="bg-background">
           <div className="section-container">
-           
+
             <VideoTestimonials />
           </div>
         </section>
@@ -219,8 +219,8 @@ const Index = () => {
               </div>
             </div>
             <div className="mt-6 text-center">
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 className="border-accent text-accent hover:bg-accent/20 text-base px-6 py-3"
                 onClick={(e) => { e.preventDefault(); import("@/lib/lead-modal").then(m => m.openLeadModal()); }}
               >
@@ -293,7 +293,7 @@ const Index = () => {
               <div className="relative animate-fade-in-right">
                 <div className="aspect-square rounded-2xl overflow-hidden border border-primary/20 bg-gradient-to-br from-primary/10 to-accent/10 shadow-elegant">
                   <img
-                    src="/lovable-uploads/c3d5522b-6886-4b75-8ffc-d020016bb9c2.png"
+                    src="/grafico.png"
                     alt="Gráfico mostrando melhoria nos processos da clínica"
                     className="w-full h-full object-cover"
                     loading="lazy"
