@@ -59,7 +59,7 @@ const Index = () => {
               <p className="text-lg xs:text-xl md:text-2xl text-primary-foreground/90 mt-4 sm:mt-6 max-w-3xl leading-relaxed mx-auto animate-fade-in px-2" style={{ animationDelay: '0.2s' }}>
                 Mapeamento e otimização de processos para clínicas médicas, com fluxos visuais claros e recomendações baseadas em dados reais para decisões estratégicas.
               </p>
-              
+
               {/* Video Section */}
               <div className="mt-6 xs:mt-8 md:mt-10 animate-fade-in" style={{ animationDelay: '0.25s' }}>
                 <div className="w-full max-w-3xl mx-auto">
@@ -112,7 +112,7 @@ const Index = () => {
               <div className="relative order-1 md:order-2 animate-fade-in-right flex justify-center md:justify-end">
                 <div className="aspect-[4/5] w-2/3 xs:w-3/4 sm:w-2/3 md:w-4/5 max-w-[280px] xs:max-w-[320px] md:max-w-[360px] rounded-2xl overflow-hidden border border-primary/15 bg-background shadow-elegant hover:-translate-y-1 hover:shadow-elegant-hover transition-all">
                   <img
-                    src="/placeholder.svg"
+                    src="/foto_perfil.jpg"
                     alt="Foto do consultor da TechClin"
                     className="w-full h-full object-cover"
                     decoding="async"
@@ -225,8 +225,8 @@ const Index = () => {
               </div>
             </div>
             <div className="mt-6 text-center">
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 className="border-accent text-accent hover:bg-accent/20 text-base px-6 py-3"
                 onClick={(e) => { e.preventDefault(); import("@/lib/lead-modal").then(m => m.openLeadModal()); }}
               >
@@ -299,7 +299,7 @@ const Index = () => {
               <div className="relative animate-fade-in-right">
                 <div className="aspect-square rounded-2xl overflow-hidden border border-primary/20 bg-gradient-to-br from-primary/10 to-accent/10 shadow-elegant">
                   <img
-                    src="/lovable-uploads/c3d5522b-6886-4b75-8ffc-d020016bb9c2.png"
+                    src="/grafico.png"
                     alt="Gráfico mostrando melhoria nos processos da clínica"
                     className="w-full h-full object-cover"
                     loading="lazy"
