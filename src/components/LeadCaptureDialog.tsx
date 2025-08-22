@@ -11,6 +11,9 @@ const LeadCaptureDialog: React.FC = () => {
   const [loading, setLoading] = React.useState(false);
   const [form, setForm] = React.useState({ nome: "", email: "", telefone: "" });
 
+  // === CONFIGURAR AQUI O WEBHOOK ===
+  const WEBHOOK_URL = "https://techclin.app.n8n.cloud/webhook-test/533755fa-f90f-4d34-aa7d-cbaa7bade7aa"; // substitua pela URL do seu n8n
+
   React.useEffect(() => {
     const handler = () => setOpen(true);
     window.addEventListener("open-lead-modal", handler as EventListener);
@@ -40,13 +43,21 @@ const LeadCaptureDialog: React.FC = () => {
     }
     try {
       setLoading(true);
-      // Aqui você pode integrar com Supabase/email/zapier conforme necessidade
-      console.log("Lead capturado:", form);
+
+      // === ENVIO PARA O WEBHOOK ===
+      const response = await fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      if (!response.ok) throw new Error("Erro ao enviar para o webhook");
+
       toast({ title: "Tudo certo!", description: "Recebemos seus dados e entraremos em contato." });
       setOpen(false);
       setForm({ nome: "", email: "", telefone: "" });
-      
-      // Redirect to Notion page
+
+      // Redireciona para página de amostra (opcional)
       window.open("https://www.notion.so/Modelagem-e-Melhoria-de-Processos-Vida-Plena-23d89179d96f8018beb5c50fc4e3b8c0", "_blank");
     } catch (err) {
       toast({ title: "Erro ao enviar", description: "Tente novamente em instantes.", variant: "destructive" });

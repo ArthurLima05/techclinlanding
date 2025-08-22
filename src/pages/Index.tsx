@@ -34,6 +34,7 @@ const Index = () => {
               <Button
                 size="lg"
                 className="bg-accent text-accent-foreground hover:bg-accent/90 text-base"
+                onClick={() => window.open("https://w.app/ad8wrb", "_blank")}
               >
                 <span className="hidden md:inline">Agendar consultoria</span>
                 <span className="md:hidden">Agendar</span>
@@ -316,8 +317,8 @@ const Index = () => {
             <h2 className="font-bree text-2xl xs:text-3xl md:text-4xl mb-2 leading-tight">Pronto para dar o próximo passo?</h2>
             <p className="text-sm xs:text-base text-primary-foreground/90 mb-4 xs:mb-6 px-2">Agende sua consultoria e receba um diagnóstico claro com recomendações práticas.</p>
             <div>
-              <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 w-full xs:w-auto text-base xs:text-lg px-6 py-3">
-                Agendar consultoria por e-mail
+              <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 w-full xs:w-auto text-base xs:text-lg px-6 py-3" onClick={() => window.open("https://w.app/ad8wrb", "_blank")}>
+                Agendar consultoria por whatsapp
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </div>
