@@ -20,10 +20,28 @@ const LeadCaptureDialog: React.FC = () => {
     return () => window.removeEventListener("open-lead-modal", handler as EventListener);
   }, []);
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
+const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const { name, value } = e.target;
+
+  if (name === "telefone") {
+    // Remove tudo que não é número
+    let digits = value.replace(/\D/g, "");
+
+    // Limita a 11 dígitos (2 do DDD + 9 do número)
+    if (digits.length > 11) digits = digits.slice(0, 11);
+
+    // Formata: (DD) 99999-9999
+    if (digits.length <= 2) digits = `(${digits}`;
+    else if (digits.length <= 7)
+      digits = `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+    else
+      digits = `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
+
+    setForm((f) => ({ ...f, [name]: digits }));
+  } else {
     setForm((f) => ({ ...f, [name]: value }));
-  };
+  }
+};
 
   const validate = () => {
     if (!form.nome.trim()) return "Por favor, informe seu nome completo.";
