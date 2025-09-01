@@ -34,7 +34,7 @@ const Index = () => {
               <Button
                 size="lg"
                 className="bg-accent text-accent-foreground hover:bg-accent/90 text-base"
-                onClick={() => window.open("https://w.app/ad8wrb", "_blank")}
+                onClick={() => window.open("https://contate.me/558132991184", "_blank")}
               >
                 <span className="hidden md:inline">Agendar consultoria</span>
                 <span className="md:hidden">Agendar</span>

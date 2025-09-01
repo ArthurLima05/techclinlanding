@@ -24,7 +24,7 @@ const Footer = () => {
               Contato: <a href="mailto:techclin.tech@gmail.com" className="underline hover:opacity-90">techclin.tech@gmail.com</a>
             </p>
             <p>
-              WhatsApp: <a href="https://w.app/ad8wrb" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-90">+55 81 3299-1184</a>
+              WhatsApp: <a href="https://contate.me/558132991184" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-90">+55 81 3299-1184</a>
             </p>
             <p className="opacity-80">© {new Date().getFullYear()} TechClin. Todos os direitos reservados.</p>
           </div>
