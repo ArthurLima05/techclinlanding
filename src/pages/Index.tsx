@@ -123,7 +123,7 @@ const Index = () => {
               </div>
               <div className="order-2 md:order-1 space-y-4 xs:space-y-5 animate-fade-in-left text-center md:text-left px-2 xs:px-0">
                 <h3 className="font-bree text-lg xs:text-xl md:text-2xl text-primary">Transformando operações com processos claros</h3>
-                <p className="text-lg xs:text-xl md:text-2xl text-foreground/90 leading-relaxed">Especialista em automação e processos, vive no Norte de Portugal estudando Inteligência Artificial no Instituto Politécnico de Bragança e cursa ADS na CESAR School, referência nacional em TI e inovação. Com experiência em projetos no Porto Digital, maior parque tecnológico do Brasil.Além do português, tem conhecimento em inglês e francês.</p>
+                <p className="text-lg xs:text-xl md:text-2xl text-foreground/90 leading-relaxed">Proficiente em automação e processos, vive no Norte de Portugal estudando Inteligência Artificial no Instituto Politécnico de Bragança e cursa ADS na CESAR School, referência nacional em TI e inovação. Com experiência em projetos no Porto Digital, maior parque tecnológico do Brasil. Além do português, tem conhecimento em inglês e francês.</p>
 
                 <ul className="space-y-3 xs:space-y-4">
                   {[
