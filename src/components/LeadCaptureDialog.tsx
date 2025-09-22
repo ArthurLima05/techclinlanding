@@ -12,7 +12,7 @@ const LeadCaptureDialog: React.FC = () => {
   const [form, setForm] = React.useState({ nome: "", email: "", telefone: "" });
 
   // === CONFIGURAR AQUI O WEBHOOK ===
-  const WEBHOOK_URL = "https://techclin.app.n8n.cloud/webhook/533755fa-f90f-4d34-aa7d-cbaa7bade7aa"; // substitua pela URL do seu n8n
+  const WEBHOOK_URL = "https://techhclinic.app.n8n.cloud/webhook/cf8516c0-d9c5-42a4-b9fe-8c974a4a371d"; // substitua pela URL do seu n8n
 
   React.useEffect(() => {
     const handler = () => setOpen(true);
