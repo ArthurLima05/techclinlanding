@@ -52,9 +52,9 @@ const ProblemsSection = () => {
           </div>
 
           <div className="relative animate-fade-in-right">
-            <div className="aspect-square rounded-2xl overflow-hidden border border-primary/20 bg-gradient-to-br from-primary/10 to-accent/10 shadow-elegant">
+            <div className="w-[90%] aspect-square rounded-2xl overflow-hidden mx-auto border border-primary/20 bg-gradient-to-br from-primary/10 to-accent/10 shadow-elegant">
               <img
-                src="/grafico.png"
+                src="/problema1.png"
                 alt="Gráfico mostrando problemas comuns em clínicas"
                 className="w-full h-full object-cover"
                 loading="lazy"
