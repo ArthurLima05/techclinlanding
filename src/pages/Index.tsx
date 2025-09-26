@@ -3,6 +3,10 @@ import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
 import { CheckCircle, ArrowRight, Workflow, ClipboardList, MessageSquare } from "lucide-react";
 import VideoTestimonials from "@/components/VideoTestimonials";
+import DiagnosticModal from "@/components/DiagnosticModal";
+import ProblemsSection from "@/components/ProblemsSection";
+import ROICalculator from "@/components/ROICalculator";
+import GuaranteeSection from "@/components/GuaranteeSection";
 const SectionHeader = ({ title, subtitle }: { title: string; subtitle?: string }) => (
   <header className="mb-6 xs:mb-8 md:mb-12 text-center max-w-4xl mx-auto px-2">
     <h2 className="font-bree text-3xl xs:text-4xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight text-primary mb-3 xs:mb-4 leading-tight">
@@ -85,12 +89,16 @@ const Index = () => {
               </div>
 
               <div className="mt-6 xs:mt-8 md:mt-10 flex flex-col xs:flex-row items-center justify-center gap-2 xs:gap-3 animate-fade-in px-2" style={{ animationDelay: '0.3s' }}>
-                <a href="#contato" className="w-full xs:w-auto">
-                  <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 w-full xs:w-auto text-base xs:text-lg px-6 py-3">
+                <div className="w-full xs:w-auto">
+                  <Button 
+                    size="lg" 
+                    className="bg-accent text-accent-foreground hover:bg-accent/90 w-full xs:w-auto text-base xs:text-lg px-6 py-3"
+                    onClick={(e) => { e.preventDefault(); import("@/lib/diagnostic-modal").then(m => m.openDiagnosticModal()); }}
+                  >
                     Receber diagnóstico gratuito
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
-                </a>
+                </div>
                 <a href="#processo" className="w-full xs:w-auto">
                   <Button variant="outline" size="lg" className="border-accent text-accent hover:bg-accent/20 w-full xs:w-auto text-base xs:text-lg px-6 py-3">
                     Como funciona
@@ -143,6 +151,11 @@ const Index = () => {
           </div>
         </section>
 
+        {/* Seção de Problemas */}
+        <ProblemsSection />
+
+        {/* Calculadora ROI */}
+        <ROICalculator />
 
         {/* Como funciona */}
         <section id="processo" className="bg-primary/5">
@@ -228,9 +241,9 @@ const Index = () => {
               <Button
                 variant="outline"
                 className="border-accent text-accent hover:bg-accent/20 text-base px-6 py-3"
-                onClick={(e) => { e.preventDefault(); import("@/lib/lead-modal").then(m => m.openLeadModal()); }}
+                onClick={() => window.open("https://contate.me/558132991184", "_blank")}
               >
-                Receber amostra de relatório
+                Receber Relatório Detalhado
                 <ArrowRight className="ml-2" />
               </Button>
             </div>
@@ -324,8 +337,12 @@ const Index = () => {
             </div>
           </div>
         </section>
+
+        {/* Seção de Garantia */}
+        <GuaranteeSection />
       </main>
 
+      <DiagnosticModal />
       <Footer />
     </div>
   );
