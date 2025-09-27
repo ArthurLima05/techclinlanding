@@ -162,18 +162,22 @@ const ROICalculator = () => {
         throw new Error(supabaseError.message);
       }
 
-      // Enviar para webhook
-      await fetch(WEBHOOK_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...leadData,
-          telefone: `${leadData.countryCode}${leadData.telefone}`,
-          calculatorData,
-          result,
-          tipo: "roi-calculator"
-        }),
-      });
+      // Tentar enviar para webhook (mas não falhar se der erro)
+      try {
+        await fetch(WEBHOOK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ...leadData,
+            telefone: `${leadData.countryCode}${leadData.telefone}`,
+            calculatorData,
+            result,
+            tipo: "roi-calculator"
+          }),
+        });
+      } catch (webhookError) {
+        console.log('Webhook error (lead saved in DB):', webhookError);
+      }
 
       // Marcar como enviado no localStorage
       localStorage.setItem('calculadora_lead_submitted', 'true');
@@ -339,12 +343,12 @@ const ROICalculator = () => {
                     </div>
                   </div>
 
-                  <div className="bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-950/20 dark:to-orange-950/20 rounded-xl p-4 border border-red-200/50 dark:border-red-800/50">
-                    <p className="text-sm xs:text-base text-red-800 dark:text-red-200 font-medium text-center leading-relaxed">
-                      <strong>💸 O custo da inação:</strong> Clínicas que postergam otimizações perdem, em média, 
-                      <span className="font-bree text-red-900 dark:text-red-100"> 25-35% do potencial de receita anual</span>
-                    </p>
-                  </div>
+                   <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-xl p-4 border border-primary/20">
+                     <p className="text-sm xs:text-base text-foreground font-medium text-center leading-relaxed">
+                       <strong className="text-primary">O custo da inação:</strong> Clínicas que postergam otimizações perdem, em média, 
+                       <span className="font-bree text-accent"> 25-35% do potencial de receita anual</span>
+                     </p>
+                   </div>
                 </div>
               </div>
             )}

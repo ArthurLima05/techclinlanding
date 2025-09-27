@@ -89,18 +89,20 @@ const DiagnosticModal: React.FC = () => {
         throw new Error(supabaseError.message);
       }
 
-      // Enviar para webhook
-      const response = await fetch(WEBHOOK_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...form,
-          telefone: fullPhone,
-          tipo: "diagnostic"
-        }),
-      });
-
-      if (!response.ok) throw new Error("Erro ao enviar para o webhook");
+      // Tentar enviar para webhook (mas não falhar se der erro)
+      try {
+        await fetch(WEBHOOK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ...form,
+            telefone: fullPhone,
+            tipo: "diagnostic"
+          }),
+        });
+      } catch (webhookError) {
+        console.log('Webhook error (lead saved in DB):', webhookError);
+      }
 
       toast({ title: "Diagnóstico agendado!", description: "Entraremos em contato em até 24h para agendar sua videoconferência." });
       setOpen(false);
