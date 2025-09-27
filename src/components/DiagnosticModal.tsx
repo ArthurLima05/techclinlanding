@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const DiagnosticModal: React.FC = () => {
   const { toast } = useToast();
@@ -67,12 +68,34 @@ const DiagnosticModal: React.FC = () => {
     try {
       setLoading(true);
 
+      const fullPhone = form.countryCode + form.telefone.replace(/\D/g, "");
+
+      // Salvar no Supabase
+      const leadPayload = {
+        nome: form.nome,
+        email: form.email,
+        telefone: fullPhone,
+        nome_clinica: null,
+        origem: 'diagnostico',
+        dados_calculadora: null,
+        resultado_calculadora: null
+      };
+
+      const { error: supabaseError } = await supabase
+        .from('leads')
+        .insert(leadPayload);
+
+      if (supabaseError && !supabaseError.message.includes('duplicate key')) {
+        throw new Error(supabaseError.message);
+      }
+
+      // Enviar para webhook
       const response = await fetch(WEBHOOK_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...form,
-          telefone: form.countryCode + form.telefone.replace(/\D/g, ""),
+          telefone: fullPhone,
           tipo: "diagnostic"
         }),
       });

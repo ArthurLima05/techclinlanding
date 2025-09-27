@@ -2,8 +2,11 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Calculator, TrendingUp, DollarSign } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Calculator, TrendingUp, DollarSign, Clock, Target } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const ROICalculator = () => {
   const { toast } = useToast();
@@ -19,22 +22,33 @@ const ROICalculator = () => {
     nome: "",
     email: "",
     telefone: "",
+    countryCode: "+55",
     nomeClinica: ""
   });
 
   const [showResult, setShowResult] = React.useState(false);
-  const [showLeadForm, setShowLeadForm] = React.useState(false);
+  const [showLeadModal, setShowLeadModal] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
+  const [hasSubmittedLead, setHasSubmittedLead] = React.useState(false);
   const [result, setResult] = React.useState({
     economiaAtendimento: 0,
     economiaRetrabalho: 0,
     economiaAgendamentos: 0,
     economiaTotalMensal: 0,
     economiaAnual: 0,
-    roi90Dias: 0
+    roi90Dias: 0,
+    tempoRecuperado: 0
   });
 
   const WEBHOOK_URL = "https://techhclinic.app.n8n.cloud/webhook/roi-calculator-leads";
+
+  // Check if user already submitted lead on component mount
+  React.useEffect(() => {
+    const leadKey = localStorage.getItem('calculadora_lead_submitted');
+    if (leadKey) {
+      setHasSubmittedLead(true);
+    }
+  }, []);
 
   const calculateROI = () => {
     const atendimentos = Number(calculatorData.atendimentos);
@@ -57,18 +71,20 @@ const ROICalculator = () => {
     // c) Recuperação de agendamentos perdidos (60%)
     const economiaAgendamentos = agendamentosPerdidos * valorConsulta * 0.60;
 
-    // d) Economia adicional (otimização de recursos)
-    const tempoRecuperadoSemana = horasRetrabalho * 0.4; // 40% do retrabalho eliminado
+    // d) Tempo recuperado por semana (40% do retrabalho eliminado)
+    const tempoRecuperadoSemana = horasRetrabalho * 0.4;
+    
+    // e) Economia adicional (otimização de recursos)
     const valorConsultaHora = valorConsulta; // Simplificação: 1 consulta por hora
     const economiaAdicional = tempoRecuperadoSemana * valorConsultaHora * semanasMonth;
 
-    // e) Economia total mensal
+    // f) Economia total mensal
     const economiaTotalMensal = economiaAtendimento + economiaRetrabalho + economiaAgendamentos + economiaAdicional;
 
-    // f) Economia anual
+    // g) Economia anual
     const economiaAnual = economiaTotalMensal * 12;
 
-    // g) ROI em 90 dias (assumindo investimento médio de R$ 8.000)
+    // h) ROI em 90 dias (assumindo investimento médio de R$ 8.000)
     const custoSolucao = 8000;
     const economia3Meses = economiaTotalMensal * 3;
     const roi90Dias = (economia3Meses / custoSolucao) * 100;
@@ -79,7 +95,8 @@ const ROICalculator = () => {
       economiaAgendamentos: Math.round(economiaAgendamentos),
       economiaTotalMensal: Math.round(economiaTotalMensal),
       economiaAnual: Math.round(economiaAnual),
-      roi90Dias: Math.round(roi90Dias)
+      roi90Dias: Math.round(roi90Dias),
+      tempoRecuperado: Math.round(tempoRecuperadoSemana)
     });
 
     setShowResult(true);
@@ -100,7 +117,14 @@ const ROICalculator = () => {
     }
 
     calculateROI();
-    setShowLeadForm(true);
+
+    // Se já enviou lead antes, mostrar resultado direto
+    if (hasSubmittedLead) {
+      setShowResult(true);
+    } else {
+      // Se não enviou lead, abrir modal de captura
+      setShowLeadModal(true);
+    }
   };
 
   const handleLeadSubmit = async (e: React.FormEvent) => {
@@ -110,7 +134,7 @@ const ROICalculator = () => {
     if (!leadData.nome || !leadData.email || !leadData.telefone) {
       toast({
         title: "Dados obrigatórios",
-        description: "Preencha todos os campos para receber o resultado detalhado.",
+        description: "Preencha todos os campos para ver o resultado.",
         variant: "destructive"
       });
       return;
@@ -119,44 +143,54 @@ const ROICalculator = () => {
     try {
       setLoading(true);
 
-      const response = await fetch(WEBHOOK_URL, {
+      // Salvar no Supabase
+      const leadPayload = {
+        nome: leadData.nome,
+        email: leadData.email,
+        telefone: `${leadData.countryCode}${leadData.telefone}`,
+        nome_clinica: leadData.nomeClinica || null,
+        origem: 'calculadora',
+        dados_calculadora: calculatorData,
+        resultado_calculadora: result
+      };
+
+      const { error: supabaseError } = await supabase
+        .from('leads')
+        .insert(leadPayload);
+
+      if (supabaseError && !supabaseError.message.includes('duplicate key')) {
+        throw new Error(supabaseError.message);
+      }
+
+      // Enviar para webhook
+      await fetch(WEBHOOK_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...leadData,
+          telefone: `${leadData.countryCode}${leadData.telefone}`,
           calculatorData,
           result,
           tipo: "roi-calculator"
         }),
       });
 
-      if (!response.ok) throw new Error("Erro ao enviar dados");
+      // Marcar como enviado no localStorage
+      localStorage.setItem('calculadora_lead_submitted', 'true');
+      setHasSubmittedLead(true);
+      
+      // Fechar modal e mostrar resultado
+      setShowLeadModal(false);
+      setShowResult(true);
 
       toast({
-        title: "Cálculo enviado!",
-        description: "Você receberá o relatório detalhado por email em até 1 hora."
+        title: "Resultado calculado!",
+        description: "Confira abaixo o potencial de economia da sua clínica."
       });
-
-      // Reset forms
-      setCalculatorData({
-        atendimentos: "",
-        valorConsulta: "",
-        numMedicos: "",
-        horasRetrabalho: "",
-        agendamentosPerdidos: ""
-      });
-      setLeadData({
-        nome: "",
-        email: "",
-        telefone: "",
-        nomeClinica: ""
-      });
-      setShowResult(false);
-      setShowLeadForm(false);
 
     } catch (err) {
       toast({
-        title: "Erro ao enviar",
+        title: "Erro ao processar",
         description: "Tente novamente em instantes.",
         variant: "destructive"
       });
@@ -260,97 +294,150 @@ const ROICalculator = () => {
               </div>
             </form>
 
-            {/* Resultado e Lead Form */}
+            {/* Resultado */}
             {showResult && (
               <div className="mt-8 pt-8 border-t border-primary/10">
-                <div className="bg-accent/10 rounded-xl p-6 mb-6">
-                  <h4 className="font-bree text-xl mb-4 flex items-center gap-2">
-                    <TrendingUp className="w-5 h-5 text-accent" />
+                <div className="bg-gradient-to-br from-accent/10 to-primary/10 rounded-2xl p-6 border border-accent/20">
+                  <h4 className="font-bree text-xl xs:text-2xl mb-6 flex items-center gap-2">
+                    <TrendingUp className="w-6 h-6 text-accent" />
                     Seu potencial de economia
                   </h4>
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="bg-background rounded-lg p-4">
-                      <div className="text-2xl font-bree text-accent">R$ {result.economiaTotalMensal.toLocaleString('pt-BR')}</div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <div className="bg-background rounded-xl p-4 shadow-sm border border-primary/10">
+                      <div className="text-2xl xs:text-3xl font-bree text-accent mb-1">
+                        R$ {result.economiaTotalMensal.toLocaleString('pt-BR')}
+                      </div>
                       <div className="text-sm text-foreground/70">Economia mensal</div>
                     </div>
-                    <div className="bg-background rounded-lg p-4">
-                      <div className="text-2xl font-bree text-primary">R$ {result.economiaAnual.toLocaleString('pt-BR')}</div>
+                    
+                    <div className="bg-background rounded-xl p-4 shadow-sm border border-primary/10">
+                      <div className="text-2xl xs:text-3xl font-bree text-primary mb-1">
+                        R$ {result.economiaAnual.toLocaleString('pt-BR')}
+                      </div>
                       <div className="text-sm text-foreground/70">Economia anual</div>
                     </div>
+                    
+                    <div className="bg-background rounded-xl p-4 shadow-sm border border-primary/10">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Target className="w-4 h-4 text-accent" />
+                        <div className="text-xl xs:text-2xl font-bree text-accent">
+                          {result.roi90Dias}%
+                        </div>
+                      </div>
+                      <div className="text-sm text-foreground/70">ROI em 90 dias</div>
+                    </div>
+                    
+                    <div className="bg-background rounded-xl p-4 shadow-sm border border-primary/10">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Clock className="w-4 h-4 text-primary" />
+                        <div className="text-xl xs:text-2xl font-bree text-primary">
+                          {result.tempoRecuperado}h
+                        </div>
+                      </div>
+                      <div className="text-sm text-foreground/70">Tempo recuperado/semana</div>
+                    </div>
+                  </div>
+
+                  <div className="bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-950/20 dark:to-orange-950/20 rounded-xl p-4 border border-red-200/50 dark:border-red-800/50">
+                    <p className="text-sm xs:text-base text-red-800 dark:text-red-200 font-medium text-center leading-relaxed">
+                      <strong>💸 O custo da inação:</strong> Clínicas que postergam otimizações perdem, em média, 
+                      <span className="font-bree text-red-900 dark:text-red-100"> 25-35% do potencial de receita anual</span>
+                    </p>
                   </div>
                 </div>
-
-                {showLeadForm && (
-                  <form onSubmit={handleLeadSubmit} className="space-y-6">
-                    <div className="flex items-center gap-3 mb-4">
-                      <DollarSign className="w-6 h-6 text-accent" />
-                      <h4 className="font-bree text-xl">Receba o relatório detalhado</h4>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div className="space-y-3">
-                        <Label htmlFor="nome-lead" className="text-base">Nome completo</Label>
-                        <Input
-                          id="nome-lead"
-                          value={leadData.nome}
-                          onChange={(e) => setLeadData(prev => ({ ...prev, nome: e.target.value }))}
-                          placeholder="Seu nome completo"
-                          required
-                          className="h-12 text-base"
-                        />
-                      </div>
-
-                      <div className="space-y-3">
-                        <Label htmlFor="email-lead" className="text-base">Email</Label>
-                        <Input
-                          id="email-lead"
-                          type="email"
-                          value={leadData.email}
-                          onChange={(e) => setLeadData(prev => ({ ...prev, email: e.target.value }))}
-                          placeholder="seu@email.com"
-                          required
-                          className="h-12 text-base"
-                        />
-                      </div>
-
-                      <div className="space-y-3">
-                        <Label htmlFor="telefone-lead" className="text-base">Telefone/WhatsApp</Label>
-                        <Input
-                          id="telefone-lead"
-                          value={leadData.telefone}
-                          onChange={(e) => setLeadData(prev => ({ ...prev, telefone: e.target.value }))}
-                          placeholder="(11) 91234-5678"
-                          required
-                          className="h-12 text-base"
-                        />
-                      </div>
-
-                      <div className="space-y-3">
-                        <Label htmlFor="clinica-lead" className="text-base">Nome da clínica</Label>
-                        <Input
-                          id="clinica-lead"
-                          value={leadData.nomeClinica}
-                          onChange={(e) => setLeadData(prev => ({ ...prev, nomeClinica: e.target.value }))}
-                          placeholder="Nome da sua clínica"
-                          className="h-12 text-base"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="text-center">
-                      <Button 
-                        type="submit" 
-                        disabled={loading}
-                        size="lg" 
-                        className="bg-primary text-primary-foreground hover:bg-primary/90"
-                      >
-                        {loading ? "Enviando..." : "Receber Relatório Completo"}
-                      </Button>
-                    </div>
-                  </form>
-                )}
               </div>
             )}
+
+            {/* Modal de Lead */}
+            <Dialog open={showLeadModal} onOpenChange={setShowLeadModal}>
+              <DialogContent className="sm:max-w-md">
+                <DialogHeader>
+                  <DialogTitle className="font-bree text-xl text-center">
+                    Ver Resultado da Calculadora
+                  </DialogTitle>
+                </DialogHeader>
+                
+                <form onSubmit={handleLeadSubmit} className="space-y-4">
+                  <div className="space-y-3">
+                    <Label htmlFor="nome-modal" className="text-base">Nome completo</Label>
+                    <Input
+                      id="nome-modal"
+                      value={leadData.nome}
+                      onChange={(e) => setLeadData(prev => ({ ...prev, nome: e.target.value }))}
+                      placeholder="Seu nome completo"
+                      required
+                      className="h-12 text-base"
+                    />
+                  </div>
+
+                  <div className="space-y-3">
+                    <Label htmlFor="email-modal" className="text-base">Email</Label>
+                    <Input
+                      id="email-modal"
+                      type="email"
+                      value={leadData.email}
+                      onChange={(e) => setLeadData(prev => ({ ...prev, email: e.target.value }))}
+                      placeholder="seu@email.com"
+                      required
+                      className="h-12 text-base"
+                    />
+                  </div>
+
+                  <div className="space-y-3">
+                    <Label htmlFor="telefone-modal" className="text-base">Telefone/WhatsApp</Label>
+                    <div className="flex gap-2">
+                      <Select 
+                        value={leadData.countryCode} 
+                        onValueChange={(value) => setLeadData(prev => ({ ...prev, countryCode: value }))}
+                      >
+                        <SelectTrigger className="w-20 h-12">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="+55">🇧🇷 +55</SelectItem>
+                          <SelectItem value="+1">🇺🇸 +1</SelectItem>
+                          <SelectItem value="+44">🇬🇧 +44</SelectItem>
+                          <SelectItem value="+34">🇪🇸 +34</SelectItem>
+                          <SelectItem value="+39">🇮🇹 +39</SelectItem>
+                          <SelectItem value="+33">🇫🇷 +33</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <Input
+                        id="telefone-modal"
+                        value={leadData.telefone}
+                        onChange={(e) => setLeadData(prev => ({ ...prev, telefone: e.target.value }))}
+                        placeholder="(11) 91234-5678"
+                        required
+                        className="h-12 text-base flex-1"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-3">
+                    <Label htmlFor="clinica-modal" className="text-base">Nome da clínica (opcional)</Label>
+                    <Input
+                      id="clinica-modal"
+                      value={leadData.nomeClinica}
+                      onChange={(e) => setLeadData(prev => ({ ...prev, nomeClinica: e.target.value }))}
+                      placeholder="Nome da sua clínica"
+                      className="h-12 text-base"
+                    />
+                  </div>
+
+                  <div className="pt-4">
+                    <Button 
+                      type="submit" 
+                      disabled={loading}
+                      size="lg" 
+                      className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
+                    >
+                      {loading ? "Processando..." : "Ver Meu Resultado"}
+                    </Button>
+                  </div>
+                </form>
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
       </div>

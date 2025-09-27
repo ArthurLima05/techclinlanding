@@ -64,10 +64,13 @@ const ProblemsSection = () => {
         </div>
 
         <div className="mt-8 xs:mt-12 text-center">
-          <div className="bg-accent/10 border border-accent/20 rounded-2xl p-6 xs:p-8 max-w-4xl mx-auto">
-            <p className="text-lg xs:text-xl md:text-2xl font-bree text-accent mb-2">O custo da inação:</p>
-            <p className="text-base xs:text-lg text-foreground/90 leading-relaxed">
-              Clínicas que postergam otimizações perdem, em média, <strong className="text-accent">25-35% do potencial de receita anual.</strong>
+          <div className="bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-950/20 dark:to-orange-950/20 border border-red-200/50 dark:border-red-800/50 rounded-2xl p-6 xs:p-8 max-w-4xl mx-auto shadow-sm">
+            <div className="flex items-center justify-center gap-2 mb-3">
+              <span className="text-2xl">💸</span>
+              <p className="text-lg xs:text-xl font-bree text-red-800 dark:text-red-200">O custo da inação</p>
+            </div>
+            <p className="text-base xs:text-lg text-red-700 dark:text-red-300 leading-relaxed max-w-2xl mx-auto">
+              Clínicas que postergam otimizações perdem, em média, <strong className="font-bree text-red-900 dark:text-red-100">25-35% do potencial de receita anual</strong>
             </p>
           </div>
         </div>
