@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Calculator, TrendingUp, DollarSign, Clock, Target } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { formatPhoneByCountry, getPhonePlaceholder, validatePhoneLength } from "@/lib/phone-formatter";
 
 const ROICalculator = () => {
   const { toast } = useToast();
@@ -49,6 +50,14 @@ const ROICalculator = () => {
       setHasSubmittedLead(true);
     }
   }, []);
+
+  // Reformatar telefone quando o código do país muda
+  React.useEffect(() => {
+    if (leadData.telefone) {
+      const formatted = formatPhoneByCountry(leadData.telefone, leadData.countryCode);
+      setLeadData(prev => ({ ...prev, telefone: formatted }));
+    }
+  }, [leadData.countryCode]);
 
   const calculateROI = () => {
     const atendimentos = Number(calculatorData.atendimentos);
@@ -135,6 +144,16 @@ const ROICalculator = () => {
       toast({
         title: "Dados obrigatórios",
         description: "Preencha todos os campos para ver o resultado.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    // Validar formato do telefone
+    if (!validatePhoneLength(leadData.telefone, leadData.countryCode)) {
+      toast({
+        title: "Telefone inválido",
+        description: "Informe um telefone válido para o país selecionado.",
         variant: "destructive"
       });
       return;
@@ -410,8 +429,11 @@ const ROICalculator = () => {
                       <Input
                         id="telefone-modal"
                         value={leadData.telefone}
-                        onChange={(e) => setLeadData(prev => ({ ...prev, telefone: e.target.value }))}
-                        placeholder="(11) 91234-5678"
+                        onChange={(e) => {
+                          const formatted = formatPhoneByCountry(e.target.value, leadData.countryCode);
+                          setLeadData(prev => ({ ...prev, telefone: formatted }));
+                        }}
+                        placeholder={getPhonePlaceholder(leadData.countryCode)}
                         required
                         className="h-12 text-base flex-1"
                       />

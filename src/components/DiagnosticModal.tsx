@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { formatPhoneByCountry, getPhonePlaceholder, validatePhoneLength } from "@/lib/phone-formatter";
 
 const DiagnosticModal: React.FC = () => {
   const { toast } = useToast();
@@ -26,24 +27,20 @@ const DiagnosticModal: React.FC = () => {
     return () => window.removeEventListener("open-diagnostic-modal", handler as EventListener);
   }, []);
 
+  // Reformatar telefone quando o código do país muda
+  React.useEffect(() => {
+    if (form.telefone) {
+      const formatted = formatPhoneByCountry(form.telefone, form.countryCode);
+      setForm(f => ({ ...f, telefone: formatted }));
+    }
+  }, [form.countryCode]);
+
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
     if (name === "telefone") {
-      // Remove tudo que não é número
-      let digits = value.replace(/\D/g, "");
-
-      // Limita a 11 dígitos (2 do DDD + 9 do número)
-      if (digits.length > 11) digits = digits.slice(0, 11);
-
-      // Formata: (DD) 99999-9999
-      if (digits.length <= 2) digits = `(${digits}`;
-      else if (digits.length <= 7)
-        digits = `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
-      else
-        digits = `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
-
-      setForm((f) => ({ ...f, [name]: digits }));
+      const formatted = formatPhoneByCountry(value, form.countryCode);
+      setForm((f) => ({ ...f, [name]: formatted }));
     } else {
       setForm((f) => ({ ...f, [name]: value }));
     }
@@ -53,8 +50,9 @@ const DiagnosticModal: React.FC = () => {
     if (!form.nome.trim()) return "Por favor, informe seu nome completo.";
     const emailOk = /[^\s@]+@[^\s@]+\.[^\s@]+/.test(form.email);
     if (!emailOk) return "E-mail inválido.";
-    const digits = form.telefone.replace(/\D/g, "");
-    if (digits.length < 10) return "Informe um telefone válido (com DDD).";
+    if (!validatePhoneLength(form.telefone, form.countryCode)) {
+      return "Informe um telefone válido para o país selecionado.";
+    }
     return null;
   };
 
@@ -173,7 +171,7 @@ const DiagnosticModal: React.FC = () => {
                 type="tel" 
                 value={form.telefone} 
                 onChange={onChange} 
-                placeholder="(11) 91234-5678" 
+                placeholder={getPhonePlaceholder(form.countryCode)} 
                 required 
                 className="h-12 text-base flex-1" 
               />
