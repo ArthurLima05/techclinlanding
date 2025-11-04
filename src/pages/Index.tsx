@@ -71,7 +71,7 @@ const Index = () => {
                   <div className="relative rounded-xl overflow-hidden border border-primary-foreground/20 bg-primary-foreground/10 shadow-elegant">
                     <div className="aspect-video">
                       <img
-                        src="/hero-image.jpg"
+                        src="/video-cover.jpg"
                         alt="Vídeo demonstrativo - Transformação de clínicas com automação"
                         className="w-full h-full object-cover"
                         loading="eager"
